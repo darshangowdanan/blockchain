@@ -1,5 +1,5 @@
 "use client"
-
+import ClientOnly from "@/components/ClientOnly"
 import { Header } from "@/components/header"
 import { FeaturesSection } from "@/components/features-section"
 import  BookingSection  from "@/components/booking-section"
@@ -14,8 +14,8 @@ export default function Home() {
 
       {/* Content */}
       <div className="relative z-10">
-        <Header />
-        <BookingSection />
+        <ClientOnly><Header /></ClientOnly>        
+        <ClientOnly><BookingSection /></ClientOnly>
         <DashboardSection />
         <FeaturesSection />
         <Footer />

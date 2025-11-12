@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { signIn } from "next-auth/react"
 import SignUpForm from "./SignUpForm"
 
 type SignInFormProps = {
@@ -12,28 +13,36 @@ export default function SignInForm({ onClose }: SignInFormProps) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   if (showSignUp) return <SignUpForm onClose={onClose} />
 
-interface FormSubmitEvent extends React.FormEvent<HTMLFormElement> {}
-
-const handleSubmit = (e: FormSubmitEvent): void => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     if (!email || !password) {
-        setError("All fields are required.")
-        return
+      setError("All fields are required.")
+      return
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setError("Please enter a valid email address.")
-        return
-    }
-    if (password.length < 6) {
-        setError("Password must be at least 6 characters long.")
-        return
-    }
+
+    setLoading(true)
     setError("")
-    alert("Sign in successful ✅")
-}
+
+    const res = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    })
+
+    setLoading(false)
+
+    if (res?.error) {
+      setError(res.error)
+    } else {
+      alert("Sign in successful ✅")
+      onClose()
+    }
+  }
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
@@ -67,9 +76,10 @@ const handleSubmit = (e: FormSubmitEvent): void => {
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button
             type="submit"
+            disabled={loading}
             className="rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 py-3 text-lg font-medium text-white hover:opacity-90 transition"
           >
-            Sign In
+            {loading ? "Signing In..." : "Sign In"}
           </button>
         </form>
 

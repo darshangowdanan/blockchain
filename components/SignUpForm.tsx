@@ -1,30 +1,24 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import SignInForm from "./SignIn"
+import { useState } from "react";
+import SignInForm from "./SignIn";
 
 type SignUpFormProps = {
-  onClose: () => void
-}
+  onClose: () => void;
+};
 
 export default function SignUpForm({ onClose }: SignUpFormProps) {
-  const [showSignIn, setShowSignIn] = useState(false)
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [error, setError] = useState("")
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  if (showSignIn) return <SignInForm onClose={onClose} />
+  if (showSignIn) return <SignInForm onClose={onClose} />;
 
-  interface FormData {
-    name: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!name || !email || !password || !confirmPassword) {
@@ -48,14 +42,56 @@ export default function SignUpForm({ onClose }: SignUpFormProps) {
     }
 
     setError("");
-    alert("Account created successfully 🎉");
-  }
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          full_name: name,
+          email,
+          password,
+        }),
+      });
+
+      const data = await res.json();
+      setLoading(false);
+
+      if (!res.ok) {
+        // 👇 Handle existing email
+        if (res.status === 409) {
+          setError("Email already registered. Please sign in.");
+        } else {
+          throw new Error(data.error || "Failed to register");
+        }
+        return;
+      }
+
+      // ✅ Ask browser to remember password
+      const form = e.target as HTMLFormElement;
+      const emailInput = form.querySelector<HTMLInputElement>('input[type="email"]');
+      const passwordInput = form.querySelector<HTMLInputElement>('input[type="password"]');
+      if (emailInput && passwordInput) {
+        emailInput.autocomplete = "username";
+        passwordInput.autocomplete = "new-password";
+      }
+
+      alert("Account created successfully 🎉 Please sign in now.");
+
+      // 👇 After successful sign-up, redirect to Sign In
+      setShowSignIn(true);
+
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Something went wrong. Please try again.");
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="relative bg-slate-900 border border-white/10 rounded-2xl p-8 w-[400px] text-center shadow-2xl">
-        
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl font-bold transition"
@@ -65,13 +101,14 @@ export default function SignUpForm({ onClose }: SignUpFormProps) {
 
         <h2 className="text-3xl font-semibold text-white mb-6">Sign Up</h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4" autoComplete="on">
           <input
             type="text"
             placeholder="Full Name"
             className="px-4 py-3 rounded-lg bg-white/10 text-white focus:outline-none text-lg"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            autoComplete="name"
           />
           <input
             type="email"
@@ -79,6 +116,7 @@ export default function SignUpForm({ onClose }: SignUpFormProps) {
             className="px-4 py-3 rounded-lg bg-white/10 text-white focus:outline-none text-lg"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="username"
           />
           <input
             type="password"
@@ -86,6 +124,7 @@ export default function SignUpForm({ onClose }: SignUpFormProps) {
             className="px-4 py-3 rounded-lg bg-white/10 text-white focus:outline-none text-lg"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
           />
           <input
             type="password"
@@ -97,10 +136,10 @@ export default function SignUpForm({ onClose }: SignUpFormProps) {
           {error && <p className="text-red-400 text-sm">{error}</p>}
           <button
             type="submit"
-            disabled={!name || !email || !password || !confirmPassword}
+            disabled={loading}
             className="rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 py-3 text-lg font-medium text-white hover:opacity-90 transition disabled:opacity-50"
           >
-            Sign Up
+            {loading ? "Creating..." : "Sign Up"}
           </button>
         </form>
 
@@ -122,5 +161,5 @@ export default function SignUpForm({ onClose }: SignUpFormProps) {
         </p>
       </div>
     </div>
-  )
+  );
 }
