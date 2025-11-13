@@ -19,7 +19,6 @@ export default function SignInForm({ onClose }: SignInFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     if (!email || !password) {
       setError("All fields are required.")
       return
@@ -39,15 +38,13 @@ export default function SignInForm({ onClose }: SignInFormProps) {
     if (res?.error) {
       setError(res.error)
     } else {
-      alert("Sign in successful ✅")
-      onClose()
+      onClose() // just close the modal
     }
   }
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="relative bg-slate-900 border border-white/10 rounded-2xl p-8 w-[400px] text-center shadow-2xl">
-        
         {/* Close Button */}
         <button
           onClick={onClose}

@@ -12,7 +12,7 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const { email, password } = credentials
+        const { email, password } = credentials!
 
         // Check if user exists
         const result = await pool.query("SELECT * FROM users WHERE email = $1", [email])
@@ -32,7 +32,7 @@ const handler = NextAuth({
     strategy: "jwt",
   },
   pages: {
-    signIn: "/SignIn",
+    signIn: "/", // optional, your custom sign-in page
   },
   secret: process.env.NEXTAUTH_SECRET,
 })

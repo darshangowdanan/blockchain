@@ -1,0 +1,2524 @@
+[
+  {
+    "route_id": "R001AA",
+    "route_no": "335-E",
+    "route_name": "Kempegowda Bus Station to Whitefield TTMC",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield TTMC",
+    "intermediate_stops": ["Corporation Circle", "MG Road Metro", "Trinity Circle", "Indiranagar", "Tin Factory", "KR Puram", "Marathahalli", "Graphite India", "Hope Farm Junction"]
+  },
+  {
+    "route_id": "R002AB",
+    "route_no": "V-500D",
+    "route_name": "Hebbal to Central Silk Board (ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Manyata Tech Park", "Nagawara", "Banaswadi", "KR Puram", "Mahadevapura", "Marathahalli", "Bellandur", "Agara", "HSR Layout"]
+  },
+  {
+    "route_id": "R003AC",
+    "route_no": "356-C",
+    "route_name": "Kempegowda Bus Station to Electronic City",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City (Wipro)",
+    "intermediate_stops": ["Town Hall", "Shantinagar TTMC", "Dairy Circle", "Madiwala", "Central Silk Board", "Bommanahalli", "Kudlu Gate", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R004AD",
+    "route_no": "222-A",
+    "route_name": "KR Market to Kengeri TTMC",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Town Hall", "Mysore Road Satellite Bus Station", "Deepanjali Nagar", "Nayanadahalli", "Rajarajeshwari Nagar Gate"]
+  },
+  {
+    "route_id": "R005AE",
+    "route_no": "290-E",
+    "route_name": "Shivajinagar to Yelahanka Satellite Town",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Yelahanka Satellite Town",
+    "intermediate_stops": ["Cunningham Road", "Mekhri Circle", "Hebbal", "Esteem Mall", "Byatarayanapura", "Yelahanka Old Town"]
+  },
+  {
+    "route_id": "R006AF",
+    "route_no": "13",
+    "route_name": "Banashankari TTMC to Shivajinagar",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Shivajinagar Bus Station",
+    "intermediate_stops": ["South End Circle", "Lalbagh West Gate", "KR Market", "Town Hall", "Corporation Circle", "Indian Express"]
+  },
+  {
+    "route_id": "R007AG",
+    "route_no": "V-331A",
+    "route_name": "Shivajinagar to ITPL",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "ITPL",
+    "intermediate_stops": ["Halasuru (Ulsoor)", "Indiranagar", "Tin Factory", "KR Puram", "Marathahalli", "Kundalahalli Gate", "Graphite India"]
+  },
+  {
+    "route_id": "R008AH",
+    "route_no": "G-2",
+    "route_name": "KR Market to Sarjapur",
+    "fromstation": "KR Market",
+    "tostation": "Sarjapur Bus Stand",
+    "intermediate_stops": ["Shantinagar", "Dairy Circle", "Madiwala", "Central Silk Board", "Agara", "Iblur Junction", "Bellandur Gate", "Wipro Sarjapur Office"]
+  },
+  {
+    "route_id": "R009AI",
+    "route_no": "401-B",
+    "route_name": "Yeshwanthpur TTMC to Kengeri TTMC",
+    "fromstation": "Yeshwanthpur TTMC",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Goraguntepalya", "Laggere Bridge", "Nagarbhavi Circle", "Bangalore University", "Rajarajeshwari Nagar Gate"]
+  },
+  {
+    "route_id": "R010AJ",
+    "route_no": "171",
+    "route_name": "Koramangala (Wipro Park) to Majestic",
+    "fromstation": "Koramangala (Wipro Park)",
+    "tostation": "Kempegowda Bus Station (Majestic)",
+    "intermediate_stops": ["Koramangala Water Tank", "St. John's Hospital", "Dairy Circle", "Shantinagar TTMC", "Town Hall", "Mysore Bank Circle"]
+  },
+  {
+    "route_id": "R011AK",
+    "route_no": "600-F",
+    "route_name": "Banashankari TTMC to Electronic City",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Electronic City (Infosys)",
+    "intermediate_stops": ["Jayaprakash Nagar", "BTM Layout", "Central Silk Board", "Bommanahalli", "Kudlu Gate", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R012AL",
+    "route_no": "V-500KB",
+    "route_name": "Central Silk Board to Kadugodi (ORR)",
+    "fromstation": "Central Silk Board",
+    "tostation": "Kadugodi Bus Station",
+    "intermediate_stops": ["HSR Layout", "Agara", "Bellandur", "Marathahalli Bridge", "Kundalahalli Gate", "ITPL", "Hope Farm Junction"]
+  },
+  {
+    "route_id": "R013AM",
+    "route_no": "201",
+    "route_name": "Srinagar to Domlur",
+    "fromstation": "Srinagar Bus Stand",
+    "tostation": "Domlur TTMC",
+    "intermediate_stops": ["Banashankari", "South End Circle", "Jayanagar 4th Block", "Madiwala", "Koramangala", "Indiranagar 100ft Road"]
+  },
+  {
+    "route_id": "R014AN",
+    "route_no": "276",
+    "route_name": "Majestic to Vidyaranyapura",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Vidyaranyapura",
+    "intermediate_stops": ["Malleshwaram 18th Cross", "Yeshwanthpur", "Mekhri Circle", "Hebbal", "BEL Circle", "MS Palya"]
+  },
+  {
+    "route_id": "R015AO",
+    "route_no": "410",
+    "route_name": "Jalahalli Cross to Banashankari",
+    "fromstation": "Jalahalli Cross",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["Goraguntepalya", "Yeshwanthpur", "Rajajinagar", "Vijayanagar", "Attiguppe", "Kottigepalya"]
+  },
+  {
+    "route_id": "R016AP",
+    "route_no": "V-365",
+    "route_name": "Majestic to Bannerghatta National Park",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bannerghatta National Park",
+    "intermediate_stops": ["Shantinagar", "Dairy Circle", "Jayadeva Hospital", "BTM Layout", "Bilekahalli", "Gottigere"]
+  },
+  {
+    "route_id": "R017AQ",
+    "route_no": "505",
+    "route_name": "ITPL to Electronic City",
+    "fromstation": "ITPL",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Kundalahalli Gate", "Marathahalli", "Bellandur", "Agara", "Central Silk Board", "Bommanahalli", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R018AR",
+    "route_no": "K-1",
+    "route_name": "Majestic to Jayanagar 9th Block",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Jayanagar 9th Block",
+    "intermediate_stops": ["KR Market", "Lalbagh Main Gate", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R019AS",
+    "route_no": "346-A",
+    "route_name": "KR Market to Electronic City (Phase 2)",
+    "fromstation": "KR Market",
+    "tostation": "Electronic City (Phase 2)",
+    "intermediate_stops": ["Lalbagh", "Shantinagar", "Madiwala", "Central Silk Board", "Bommanahalli", "Singasandra", "Hosa Road"]
+  },
+  {
+    "route_id": "R020AT",
+    "route_no": "500-A",
+    "route_name": "Banashankari TTMC to Hebbal",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["JP Nagar", "BTM Layout", "Central Silk Board", "HSR Layout", "Marathahalli", "KR Puram", "Nagawara"]
+  },
+  {
+    "route_id": "R021AU",
+    "route_no": "25-A",
+    "route_name": "Majestic to BTM Layout",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "BTM Layout (Kuvempunagar)",
+    "intermediate_stops": ["Town Hall", "Shantinagar", "Dairy Circle", "Jayadeva Hospital", "Udupi Garden"]
+  },
+  {
+    "route_id": "R022AV",
+    "route_no": "252",
+    "route_name": "Majestic to Peenya 2nd Stage",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Peenya 2nd Stage",
+    "intermediate_stops": ["Rajajinagar", "Yeshwanthpur", "Goraguntepalya", "Jalahalli Cross", "Peenya 1st Stage"]
+  },
+  {
+    "route_id": "R023AW",
+    "route_no": "V-276E",
+    "route_name": "Majestic to Vidyaranyapura (AC)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Vidyaranyapura",
+    "intermediate_stops": ["Mekhri Circle", "Hebbal", "BEL Circle", "Yelahanka New Town", "MS Palya"]
+  },
+  {
+    "route_id": "R024AX",
+    "route_no": "314",
+    "route_name": "Majestic to CV Raman Nagar",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "CV Raman Nagar",
+    "intermediate_stops": ["Corporation", "MG Road", "Trinity Circle", "Indiranagar BDA Complex", "Thippasandra", "Bagmane Tech Park"]
+  },
+  {
+    "route_id": "R025AY",
+    "route_no": "411-A",
+    "route_no_comment": "Connecting north and west",
+    "route_name": "Yeshwanthpur to Nagarbhavi BDA Complex",
+    "fromstation": "Yeshwanthpur TTMC",
+    "tostation": "Nagarbhavi BDA Complex",
+    "intermediate_stops": ["Goraguntepalya", "Laggere", "Peenya", "Sumanahalli", "Nagarbhavi Circle"]
+  },
+  {
+    "route_id": "R026AZ",
+    "route_no": "502-A",
+    "route_name": "Hebbal to Kengeri (ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["BEL Circle", "Goraguntepalya", "Laggere Bridge", "Sumanahalli Flyover", "Nagarbhavi Circle", "Bangalore University"]
+  },
+  {
+    "route_id": "R027BA",
+    "route_no": "378",
+    "route_name": "Kengeri to Electronic City",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Rajarajeshwari Nagar", "Banashankari", "Jayadeva Hospital", "Central Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R028BB",
+    "route_no": "140",
+    "route_name": "Shivajinagar to Austin Town",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Austin Town",
+    "intermediate_stops": ["Manipal Centre", "MG Road", "Richmond Road", "Shoolay Circle", "Vivek Nagar"]
+  },
+  {
+    "route_id": "R029BC",
+    "route_no": "61",
+    "route_name": "Majestic to Vijayanagar",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Vijayanagar",
+    "intermediate_stops": ["Magadi Road Toll Gate", "Prasanna Theatre", "Vijayanagar TTMC", "RPC Layout"]
+  },
+  {
+    "route_id": "R030BD",
+    "route_no": "V-500N",
+    "route_name": "Kadugodi to Hebbal",
+    "fromstation": "Kadugodi Bus Station",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Hope Farm", "ITPL", "Kundalahalli", "Marathahalli", "KR Puram", "Nagawara", "Manyata Tech Park"]
+  },
+  {
+    "route_id": "R031BE",
+    "route_no": "215-E",
+    "route_name": "KR Market to Bannerghatta Circle",
+    "fromstation": "KR Market",
+    "tostation": "Bannerghatta Circle",
+    "intermediate_stops": ["Lalbagh", "Dairy Circle", "Jayadeva Hospital", "BTM Layout", "Bilekahalli", "Gottigere"]
+  },
+  {
+    "route_id": "R032BF",
+    "route_no": "330-E",
+    "route_name": "Shivajinagar to KR Puram",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Halasuru", "Indiranagar", "Tin Factory", "Mahadevapura", "B Narayanapura"]
+  },
+  {
+    "route_id": "R033BG",
+    "route_no": "45-G",
+    "route_name": "Majestic to Jayanagar 4th Block",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Jayanagar 4th Block",
+    "intermediate_stops": ["Town Hall", "Lalbagh West Gate", "Basavanagudi", "South End Circle"]
+  },
+  {
+    "route_id": "R034BH",
+    "route_no": "2",
+    "route_name": "Majestic to JP Nagar 6th Phase",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "JP Nagar 6th Phase",
+    "intermediate_stops": ["KR Market", "Lalbagh", "South End Circle", "Jayanagar 9th Block", "JP Nagar 3rd Phase"]
+  },
+  {
+    "route_id": "R035BI",
+    "route_no": "176",
+    "route_name": "Vijayanagar to Kaval Byrasandra",
+    "fromstation": "Vijayanagar",
+    "tostation": "Kaval Byrasandra",
+    "intermediate_stops": ["Rajajinagar", "Malleshwaram", "Mekhri Circle", "RT Nagar", "Sultanpalya"]
+  },
+  {
+    "route_id": "R036BJ",
+    "route_no": "501-A",
+    "route_name": "Hebbal to Banashankari (ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["BEL Circle", "Goraguntepalya", "Nagarbhavi Circle", "Bangalore University", "Kengeri", "Uttarahalli"]
+  },
+  {
+    "route_id": "R037BK",
+    "route_no": "305-E",
+    "route_name": "Majestic to Kadugodi",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kadugodi Bus Station",
+    "intermediate_stops": ["Corporation", "MG Road", "Tin Factory", "KR Puram", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R038BL",
+    "route_no": "V-360K",
+    "route_name": "KR Market to Bannerghatta (AC)",
+    "fromstation": "KR Market",
+    "tostation": "Bannerghatta",
+    "intermediate_stops": ["Shantinagar", "Dairy Circle", "Jayadeva Hospital", "BTM Layout", "Arakere Gate", "Gottigere"]
+  },
+  {
+    "route_id": "R039BM",
+    "route_no": "226-M",
+    "route_name": "KR Market to Bidadi",
+    "fromstation": "KR Market",
+    "tostation": "Bidadi",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri TTMC", "Rajarajeshwari Medical College"]
+  },
+  {
+    "route_id": "R040BN",
+    "route_no": "402-B",
+    "route_name": "Majestic to Yelahanka Satellite Town",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Yelahanka Satellite Town",
+    "intermediate_stops": ["Mekhri Circle", "Hebbal", "Byatarayanapura", "Yelahanka Old Town", "NES Circle"]
+  },
+  {
+    "route_id": "R041BO",
+    "route_no": "342-F",
+    "route_name": "Shivajinagar to Sarjapur",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Sarjapur",
+    "intermediate_stops": ["MG Road", "Domlur", "Koramangala", "Agara", "Bellandur Gate", "Carmelaram", "Doddakannelli"]
+  },
+  {
+    "route_id": "R042BP",
+    "route_no": "507",
+    "route_name": "KR Puram to Peenya",
+    "fromstation": "KR Puram",
+    "tostation": "Peenya 2nd Stage",
+    "intermediate_stops": ["Hebbal", "BEL Circle", "Goraguntepalya", "Jalahalli Cross", "Peenya 1st Stage"]
+  },
+  {
+    "route_id": "R043BQ",
+    "route_no": "V-340A",
+    "route_name": "Koramangala to Electronic City (AC)",
+    "fromstation": "Koramangala 6th Block",
+    "tostation": "Electronic City (Wipro)",
+    "intermediate_stops": ["Koramangala Water Tank", "Madiwala", "Central Silk Board", "Bommanahalli", "Kudlu Gate", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R044BR",
+    "route_no": "248",
+    "route_name": "KR Market to Jalahalli Cross",
+    "fromstation": "KR Market",
+    "tostation": "Jalahalli Cross",
+    "intermediate_stops": ["Majestic", "Rajajinagar", "Yeshwanthpur", "Goraguntepalya", "Peenya"]
+  },
+  {
+    "route_id": "R045BS",
+    "route_no": "300-C",
+    "route_name": "Shivajinagar to Banaswadi",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Banaswadi",
+    "intermediate_stops": ["Halasuru", "Cox Town", "Maruthi Seva Nagar", "ITC Factory"]
+  },
+  {
+    "route_id": "R046BT",
+    "route_no": "500-C",
+    "route_name": "ITPL to Banashankari",
+    "fromstation": "ITPL",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["Marathahalli", "Bellandur", "Agara", "Central Silk Board", "BTM Layout", "Jayadeva Hospital", "JP Nagar"]
+  },
+  {
+    "route_id": "R047BU",
+    "route_no": "1",
+    "route_name": "Jayanagar 9th Block to Yeshwanthpur",
+    "fromstation": "Jayanagar 9th Block",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["South End Circle", "KR Market", "Majestic", "Malleshwaram", "Navrang"]
+  },
+  {
+    "route_id": "R048BV",
+    "route_no": "139",
+    "route_name": "Majestic to Jeevan Bima Nagar",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Jeevan Bima Nagar",
+    "intermediate_stops": ["Corporation", "MG Road", "Trinity Circle", "Indiranagar 100ft Road", "Domlur"]
+  },
+  {
+    "route_id": "R049BW",
+    "route_no": "362-C",
+    "route_name": "Shivajinagar to HSR Layout",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "HSR Layout BDA Complex",
+    "intermediate_stops": ["MG Road", "Shoolay Circle", "Koramangala", "Madiwala", "Central Silk Board", "Agara"]
+  },
+  {
+    "route_id": "R050BX",
+    "route_no": "V-500K",
+    "route_name": "Marathahalli to Kengeri (ORR)",
+    "fromstation": "Marathahalli",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Bellandur", "Agara", "Silk Board", "BTM Layout", "Banashankari", "Nayanadahalli", "Bangalore University"]
+  },
+  {
+    "route_id": "R051BY",
+    "route_no": "273",
+    "route_name": "Majestic to Jalahalli Cross",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Jalahalli Cross",
+    "intermediate_stops": ["Malleshwaram", "Yeshwanthpur", "Goraguntepalya", "Peenya"]
+  },
+  {
+    "route_id": "R052BZ",
+    "route_no": "225-C",
+    "route_name": "Majestic to RR Nagar",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Rajarajeshwari Nagar",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Deepanjali Nagar", "RR Nagar Gate", "BEML Complex"]
+  },
+  {
+    "route_id": "R053CA",
+    "route_no": "343-K",
+    "route_name": "KR Market to Begur",
+    "fromstation": "KR Market",
+    "tostation": "Begur",
+    "intermediate_stops": ["Lalbagh", "Dairy Circle", "Madiwala", "Silk Board", "Bommanahalli", "Hongasandra"]
+  },
+  {
+    "route_id": "R054CB",
+    "route_no": "500-DA",
+    "route_name": "Yelahanka to Electronic City",
+    "fromstation": "Yelahanka Satellite Town",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Hebbal", "KR Puram", "Marathahalli", "Bellandur", "Central Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R055CC",
+    "route_no": "V-410A",
+    "route_name": "Yeshwanthpur to Electronic City",
+    "fromstation": "Yeshwanthpur TTMC",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Mekhri Circle", "Hebbal", "Marathahalli", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R056CD",
+    "route_no": "328-H",
+    "route_name": "Shivajinagar to Hoskote",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Tin Factory", "KR Puram", "Medahalli", "Budigere Cross"]
+  },
+  {
+    "route_id": "R057CE",
+    "route_no": "201-G",
+    "route_name": "Banashankari to Jeevan Bima Nagar",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Jeevan Bima Nagar",
+    "intermediate_stops": ["Jayanagar", "Madiwala", "Koramangala", "Domlur", "Indiranagar"]
+  },
+  {
+    "route_id": "R058CF",
+    "route_no": "138",
+    "route_name": "Majestic to Domlur",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Domlur",
+    "intermediate_stops": ["Corporation", "MG Road", "Trinity Circle", "Indiranagar 100ft Road"]
+  },
+  {
+    "route_id": "R059CG",
+    "route_no": "333-E",
+    "route_name": "Majestic to ITPL (via Old Madras Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "ITPL",
+    "intermediate_stops": ["Shivajinagar", "Halasuru", "Tin Factory", "KR Puram", "Mahadevapura", "Graphite India"]
+  },
+  {
+    "route_id": "R060CH",
+    "route_no": "V-500DF",
+    "route_name": "Hebbal to ITPL (AC)",
+    "fromstation": "Hebbal",
+    "tostation": "ITPL",
+    "intermediate_stops": ["Manyata Tech Park", "Nagawara", "KR Puram", "Mahadevapura", "Kundalahalli Gate", "Hope Farm"]
+  },
+  {
+    "route_id": "R061CI",
+    "route_no": "90-E",
+    "route_name": "Majestic to Yeshwanthpur Railway Station",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Yeshwanthpur Railway Station",
+    "intermediate_stops": ["Malleshwaram 8th Cross", "Navrang Theatre", "Yeshwanthpur Circle"]
+  },
+  {
+    "route_id": "R062CJ",
+    "route_no": "220-A",
+    "route_name": "KR Market to Kengeri (Ullal)",
+    "fromstation": "KR Market",
+    "tostation": "Ullal Satellite Town",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Nayanadahalli", "Nagarbhavi Circle", "Mallathahalli"]
+  },
+  {
+    "route_id": "R063CK",
+    "route_no": "360-K",
+    "route_name": "Majestic to Attibele",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Attibele",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Electronic City", "Chandapura"]
+  },
+  {
+    "route_id": "R064CL",
+    "route_no": "404-B",
+    "route_name": "Yelahanka to Kengeri",
+    "fromstation": "Yelahanka Satellite Town",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Hebbal", "Goraguntepalya", "Nagarbhavi", "Bangalore University"]
+  },
+  {
+    "route_id": "R065CM",
+    "route_no": "317",
+    "route_name": "KR Puram to Varthur Kodi",
+    "fromstation": "KR Puram",
+    "tostation": "Varthur Kodi",
+    "intermediate_stops": ["Marathahalli", "Kundalahalli Gate", "Siddapura", "Varthur"]
+  },
+  {
+    "route_id": "R066CN",
+    "route_no": "340",
+    "route_name": "Majestic to Sarjapur (via Koramangala)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Sarjapur",
+    "intermediate_stops": ["Shantinagar", "Koramangala", "Agara", "Bellandur Gate", "Carmelaram"]
+  },
+  {
+    "route_id": "R067CO",
+    "route_no": "V-226N",
+    "route_name": "Majestic to Bidadi (AC)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bidadi",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri", "Rajarajeshwari Medical College"]
+  },
+  {
+    "route_id": "R068CP",
+    "route_no": "121-A",
+    "route_name": "Majestic to RT Nagar",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "RT Nagar",
+    "intermediate_stops": ["Shivajinagar", "Cantonment Station", "Jayamahal", "TV Tower"]
+  },
+  {
+    "route_id": "R069CQ",
+    "route_no": "500-T",
+    "route_name": "Tin Factory to HSR Layout",
+    "fromstation": "Tin Factory",
+    "tostation": "HSR Layout BDA Complex",
+    "intermediate_stops": ["KR Puram", "Marathahalli", "Bellandur", "Agara", "Central Silk Board"]
+  },
+  {
+    "route_id": "R070CR",
+    "route_no": "369",
+    "route_name": "Shivajinagar to Bannerghatta NP",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Bannerghatta National Park",
+    "intermediate_stops": ["MG Road", "Shantinagar", "Jayadeva Hospital", "BTM Layout", "Gottigere"]
+  },
+  {
+    "route_id": "R071CS",
+    "route_no": "60-A",
+    "route_name": "Jayanagar 9th Block to Vijayanagar",
+    "fromstation": "Jayanagar 9th Block",
+    "tostation": "Vijayanagar",
+    "intermediate_stops": ["Banashankari", "Srinagar", "Attiguppe", "Vijayanagar TTMC"]
+  },
+  {
+    "route_id": "R072CT",
+    "route_no": "285-C",
+    "route_name": "Majestic to Doddaballapur",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Doddaballapur",
+    "intermediate_stops": ["Mekhri Circle", "Hebbal", "Yelahanka", "Rajankunte"]
+  },
+  {
+    "route_id": "R073CU",
+    "route_no": "V-335H",
+    "route_name": "Majestic to Hope Farm (AC)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Hope Farm Junction",
+    "intermediate_stops": ["MG Road", "Tin Factory", "Marathahalli", "Kundalahalli", "ITPL"]
+  },
+  {
+    "route_id": "R074CV",
+    "route_no": "238",
+    "route_name": "Majestic to Nagarbhavi Circle",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Nagarbhavi Circle",
+    "intermediate_stops": ["Vijayanagar", "Chandra Layout", "Nagarbhavi 1st Stage"]
+  },
+  {
+    "route_id": "R075CW",
+    "route_no": "347-F",
+    "route_name": "KR Market to HSR Layout",
+    "fromstation": "KR Market",
+    "tostation": "HSR Layout",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Central Silk Board", "Agara", "HSR BDA Complex"]
+  },
+  {
+    "route_id": "R076CX",
+    "route_no": "500-P",
+    "route_name": "Marathahalli to Yeshwanthpur",
+    "fromstation": "Marathahalli",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["KR Puram", "Hebbal", "BEL Circle", "Goraguntepalya"]
+  },
+  {
+    "route_id": "R077CY",
+    "route_no": "V-600A",
+    "route_name": "Banashankari to Electronic City (AC)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["BTM Layout", "Central Silk Board", "Bommanahalli", "Kudlu Gate"]
+  },
+  {
+    "route_id": "R078CZ",
+    "route_no": "13-K",
+    "route_name": "Majestic to Banashankari",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["KR Market", "Lalbagh", "South End Circle", "Jayanagar"]
+  },
+  {
+    "route_id": "R079DA",
+    "route_no": "291-F",
+    "route_name": "Shivajinagar to Yelahanka (via RT Nagar)",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Cantonment", "Jayamahal", "RT Nagar", "Hebbal", "Byatarayanapura"]
+  },
+  {
+    "route_id": "R080DB",
+    "route_no": "320",
+    "route_name": "Shivajinagar to Immadihalli",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Immadihalli",
+    "intermediate_stops": ["Indiranagar", "Marathahalli", "Kundalahalli", "ITPL", "Whitefield Post Office"]
+  },
+  {
+    "route_id": "R081DC",
+    "route_no": "412",
+    "route_name": "ISRO Layout to Hennur Cross",
+    "fromstation": "ISRO Layout",
+    "tostation": "Hennur Cross",
+    "intermediate_stops": ["Banashankari", "Jayanagar", "Madiwala", "Koramangala", "Indiranagar", "Banaswadi"]
+  },
+  {
+    "route_id": "R082DD",
+    "route_no": "501-C",
+    "route_name": "Hebbal to Kengeri (via Sumanahalli)",
+    "fromstation": "Hebbal",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Goraguntepalya", "Laggere", "Sumanahalli", "Nagarbhavi", "Bangalore University"]
+  },
+  {
+    "route_id": "R083DE",
+    "route_no": "V-356J",
+    "route_name": "Yelahanka 5th Phase to Electronic City",
+    "fromstation": "Yelahanka 5th Phase",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Hebbal", "Marathahalli", "Central Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R084DF",
+    "route_no": "348-F",
+    "route_name": "Majestic to HSR Layout (Agara)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Agara",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Central Silk Board", "HSR BDA Complex"]
+  },
+  {
+    "route_id": "R085DG",
+    "route_no": "258-C",
+    "route_name": "Majestic to Nelamangala",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Nelamangala",
+    "intermediate_stops": ["Yeshwanthpur", "Goraguntepalya", "Peenya", "Jalahalli Cross", "8th Mile"]
+  },
+  {
+    "route_id": "R086DH",
+    "route_no": "304-E",
+    "route_name": "KR Market to Kalkunte Agrahara",
+    "fromstation": "KR Market",
+    "tostation": "Kalkunte Agrahara",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "ITPL", "Hope Farm", "Kadugodi"]
+  },
+  {
+    "route_id": "R087DI",
+    "route_no": "201-R",
+    "route_name": "Srinagar to CV Raman Nagar",
+    "fromstation": "Srinagar Bus Stand",
+    "tostation": "CV Raman Nagar",
+    "intermediate_stops": ["Banashankari", "Jayanagar", "Madiwala", "Koramangala", "Domlur", "Indiranagar"]
+  },
+  {
+    "route_id": "R088DJ",
+    "route_no": "V-500S",
+    "route_name": "Central Silk Board to Tin Factory (ORR)",
+    "fromstation": "Central Silk Board",
+    "tostation": "Tin Factory",
+    "intermediate_stops": ["HSR Layout", "Agara", "Bellandur", "Marathahalli", "Mahadevapura", "KR Puram"]
+  },
+  {
+    "route_id": "R089DK",
+    "route_no": "366-P",
+    "route_name": "Bagalkunte to Bannerghatta NP",
+    "fromstation": "Bagalkunte",
+    "tostation": "Bannerghatta National Park",
+    "intermediate_stops": ["Jalahalli Cross", "Goraguntepalya", "Yeshwanthpur", "Majestic", "Jayadeva", "Gottigere"]
+  },
+  {
+    "route_id": "R090DL",
+    "route_no": "43-A",
+    "route_name": "Majestic to Banashankari 3rd Stage",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Banashankari 3rd Stage",
+    "intermediate_stops": ["KR Market", "Basavanagudi", "South End Circle", "Banashankari TTMC"]
+  },
+  {
+    "route_id": "R091DM",
+    "route_no": "341",
+    "route_name": "Majestic to Sarjapur (via Madiwala)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Sarjapur",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Agara", "Bellandur Gate", "Wipro Sarjapur"]
+  },
+  {
+    "route_id": "R092DN",
+    "route_no": "235-E",
+    "route_name": "Majestic to Chandra Layout",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Chandra Layout",
+    "intermediate_stops": ["Prasanna Theatre", "Vijayanagar", "Vijayanagar TTMC"]
+  },
+  {
+    "route_id": "R093DO",
+    "route_no": "V-500G",
+    "route_name": "Hebbal to ITPL (via ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "ITPL",
+    "intermediate_stops": ["Manyata Tech Park", "KR Puram", "Marathahalli", "Kundalahalli"]
+  },
+  {
+    "route_id": "R094DP",
+    "route_no": "375-A",
+    "route_name": "Kengeri to Electronic City (Infosys)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Electronic City (Infosys)",
+    "intermediate_stops": ["Banashankari", "Jayadeva Hospital", "Central Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R095DQ",
+    "route_no": "137",
+    "route_name": "Majestic to Indiranagar (Depot)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Indiranagar (Depot)",
+    "intermediate_stops": ["Corporation", "MG Road", "Trinity Circle", "CMH Road"]
+  },
+  {
+    "route_id": "R096DR",
+    "route_no": "298-M",
+    "route_name": "Majestic to Devanahalli",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Devanahalli",
+    "intermediate_stops": ["Mekhri Circle", "Hebbal", "Yelahanka", "Chikkajala", "BIAL"]
+  },
+  {
+    "route_id": "R097DS",
+    "route_no": "353",
+    "route_name": "KR Market to Anekal",
+    "fromstation": "KR Market",
+    "tostation": "Anekal",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Electronic City", "Chandapura"]
+  },
+  {
+    "route_id": "R098DT",
+    "route_no": "V-500C",
+    "route_name": "ITPL to Banashankari (AC)",
+    "fromstation": "ITPL",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["Marathahalli", "Bellandur", "Central Silk Board", "BTM Layout", "Jayadeva"]
+  },
+  {
+    "route_id": "R099DU",
+    "route_no": "266",
+    "route_name": "Majestic to Mathikere",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Mathikere",
+    "intermediate_stops": ["Malleshwaram", "Yeshwanthpur", "BEL Circle", "Gokula"]
+  },
+  {
+    "route_id": "R100DV",
+    "route_no": "342-A",
+    "route_name": "Majestic to Dommasandra",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Dommasandra",
+    "intermediate_stops": ["Shantinagar", "Koramangala", "Agara", "Sarjapur Road", "Wipro Sarjapur"]
+  },
+  {
+    "route_id": "R101DW",
+    "route_no": "80",
+    "route_name": "Majestic to Mahalakshmi Layout",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Mahalakshmi Layout",
+    "intermediate_stops": ["Rajajinagar 1st Block", "Sujatha Talkies", "Navrang", "Shankar Mutt"]
+  },
+  {
+    "route_id": "R102DX",
+    "route_no": "302-D",
+    "route_name": "Shivajinagar to Hennur Cross",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Hennur Cross",
+    "intermediate_stops": ["Fraser Town", "Banaswadi", "Kalyan Nagar", "HRBR Layout"]
+  },
+  {
+    "route_id": "R103DY",
+    "route_no": "V-502H",
+    "route_name": "Hebbal to Kengeri (AC ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Goraguntepalya", "Laggere", "Sumanahalli", "Nagarbhavi", "Bangalore University"]
+  },
+  {
+    "route_id": "R104DZ",
+    "route_no": "368",
+    "route_name": "Majestic to Bannerghatta NP (via Jayanagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bannerghatta National Park",
+    "intermediate_stops": ["KR Market", "Jayanagar 4th Block", "Jayadeva Hospital", "BTM Layout", "Gottigere"]
+  },
+  {
+    "route_id": "R105EA",
+    "route_no": "315-E",
+    "route_name": "Majestic to KR Puram (via CV Raman Nagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["MG Road", "Indiranagar", "CV Raman Nagar", "DRDO", "Mahadevapura"]
+  },
+  {
+    "route_id": "R106EB",
+    "route_no": "336",
+    "route_name": "Majestic to Hoskote",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R107EC",
+    "route_no": "210-H",
+    "route_name": "Majestic to JP Nagar (Sarakki)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Sarakki",
+    "intermediate_stops": ["KR Market", "Lalbagh", "Jayanagar", "JP Nagar 6th Phase"]
+  },
+  {
+    "route_id": "R108ED",
+    "route_no": "401-M",
+    "route_name": "Yeshwanthpur to Kengeri (ORR)",
+    "fromstation": "Yeshwanthpur TTMC",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Goraguntepalya", "Sumanahalli", "Nagarbhavi Circle", "Bangalore University"]
+  },
+  {
+    "route_id": "R109EE",
+    "route_no": "355-E",
+    "route_name": "KR Market to Chandapura",
+    "fromstation": "KR Market",
+    "tostation": "Chandapura",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Electronic City"]
+  },
+  {
+    "route_id": "R110EF",
+    "route_no": "500-DA",
+    "route_name": "Electronic City to Yelahanka (ORR)",
+    "fromstation": "Electronic City",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Bommanahalli", "Central Silk Board", "Marathahalli", "KR Puram", "Hebbal"]
+  },
+  {
+    "route_id": "R111EG",
+    "route_no": "294-B",
+    "route_name": "Majestic to Hennur",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Hennur",
+    "intermediate_stops": ["Shivajinagar", "Fraser Town", "Lingarajapuram", "Hennur Cross"]
+  },
+  {
+    "route_id": "R112EH",
+    "route_no": "323",
+    "route_name": "KR Market to Varthur",
+    "fromstation": "KR Market",
+    "tostation": "Varthur",
+    "intermediate_stops": ["Shantinagar", "Domlur", "Marathahalli", "Kundalahalli", "Siddapura"]
+  },
+  {
+    "route_id": "R113EI",
+    "route_no": "V-500L",
+    "route_name": "Marathahalli to Banashankari (AC)",
+    "fromstation": "Marathahalli",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["Bellandur", "Agara", "Central Silk Board", "BTM Layout", "Jayadeva Hospital"]
+  },
+  {
+    "route_id": "R114EJ",
+    "route_no": "234",
+    "route_name": "Majestic to Rajajinagar 6th Block",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Rajajinagar 6th Block",
+    "intermediate_stops": ["Prasanna Theatre", "Vijayanagar", "RPC Layout"]
+  },
+  {
+    "route_id": "R115EK",
+    "route_no": "365-J",
+    "route_name": "Majestic to Jigani",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Jigani",
+    "intermediate_stops": ["Shantinagar", "Jayadeva", "BTM Layout", "Gottigere", "Bannerghatta"]
+  },
+  {
+    "route_id": "R116EL",
+    "route_no": "21",
+    "route_name": "Banashankari to Majestic",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Kempegowda Bus Station (Majestic)",
+    "intermediate_stops": ["Jayanagar", "Lalbagh", "KR Market", "Town Hall"]
+  },
+  {
+    "route_id": "R117EM",
+    "route_no": "300-E",
+    "route_name": "Majestic to Ramamurthy Nagar",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Ramamurthy Nagar",
+    "intermediate_stops": ["Shivajinagar", "Banaswadi", "KR Puram", "Kasthuri Nagar"]
+  },
+  {
+    "route_id": "R118EN",
+    "route_no": "V-500AD",
+    "route_name": "Central Silk Board to Yeshwanthpur (AC)",
+    "fromstation": "Central Silk Board",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["Marathahalli", "KR Puram", "Hebbal", "BEL Circle", "Goraguntepalya"]
+  },
+  {
+    "route_id": "R119EO",
+    "route_no": "349-A",
+    "route_name": "KR Market to Electronic City (Wipro)",
+    "fromstation": "KR Market",
+    "tostation": "Electronic City (Wipro)",
+    "intermediate_stops": ["Lalbagh", "Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R120EP",
+    "route_no": "244",
+    "route_name": "Majestic to Sunkadakatte",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Sunkadakatte",
+    "intermediate_stops": ["Magadi Road Toll Gate", "Vijayanagar", "MC Layout", "Kamakshipalya"]
+  },
+  {
+    "route_id": "R121EQ",
+    "route_no": "415",
+    "route_name": "Majestic to Nagarbhavi",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Nagarbhavi",
+    "intermediate_stops": ["Vijayanagar", "Chandra Layout", "Nagarbhavi Circle"]
+  },
+  {
+    "route_id": "R122ER",
+    "route_no": "V-334E",
+    "route_name": "Majestic to Whitefield (Kadugodi)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kadugodi Bus Station",
+    "intermediate_stops": ["MG Road", "Tin Factory", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R123ES",
+    "route_no": "372",
+    "route_name": "KR Market to Gottigere",
+    "fromstation": "KR Market",
+    "tostation": "Gottigere",
+    "intermediate_stops": ["Lalbagh", "Jayadeva Hospital", "BTM Layout", "Bilekahalli"]
+  },
+  {
+    "route_id": "R124ET",
+    "route_no": "503-A",
+    "route_name": "Central Silk Board to Vidyaranyapura",
+    "fromstation": "Central Silk Board",
+    "tostation": "Vidyaranyapura",
+    "intermediate_stops": ["Marathahalli", "KR Puram", "Hebbal", "BEL Circle", "MS Palya"]
+  },
+  {
+    "route_id": "R125EU",
+    "route_no": "15-A",
+    "route_name": "KR Market to Padmanabhanagar",
+    "fromstation": "KR Market",
+    "tostation": "Padmanabhanagar",
+    "intermediate_stops": ["Basavanagudi", "South End Circle", "Banashankari", "Kadirenahalli"]
+  },
+  {
+    "route_id": "R126EV",
+    "route_no": "290-A",
+    "route_name": "Majestic to Yelahanka (via Hebbal)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Mekhri Circle", "Hebbal", "Byatarayanapura"]
+  },
+  {
+    "route_id": "R127EW",
+    "route_no": "327-F",
+    "route_name": "Shivajinagar to Varthur (via Whitefield)",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Varthur",
+    "intermediate_stops": ["Tin Factory", "Marathahalli", "Kundalahalli", "Whitefield", "Varthur Kodi"]
+  },
+  {
+    "route_id": "R128EX",
+    "route_no": "V-500M",
+    "route_name": "HSR Layout to Hebbal (AC)",
+    "fromstation": "HSR Layout BDA Complex",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Agara", "Bellandur", "Marathahalli", "KR Puram", "Nagawara", "Manyata Tech Park"]
+  },
+  {
+    "route_id": "R129EY",
+    "route_no": "362",
+    "route_name": "Majestic to Electronic City (via HSR)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Shantinagar", "Koramangala", "Agara", "HSR Layout", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R130EZ",
+    "route_no": "227-N",
+    "route_name": "KR Market to Tavarekere (Magadi Road)",
+    "fromstation": "KR Market",
+    "tostation": "Tavarekere (Magadi Road)",
+    "intermediate_stops": ["Majestic", "Vijayanagar", "Sunkadakatte", "Anjananagar"]
+  },
+  {
+    "route_id": "R131FA",
+    "route_no": "401-AR",
+    "route_name": "Yeshwanthpur to Kengeri (via Rajajinagar)",
+    "fromstation": "Yeshwanthpur TTMC",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Rajajinagar", "Vijayanagar", "Nayanadahalli", "Bangalore University"]
+  },
+  {
+    "route_id": "R132FB",
+    "route_no": "356-E",
+    "route_name": "KR Market to Electronic City (Phase 1)",
+    "fromstation": "KR Market",
+    "tostation": "Electronic City (Phase 1)",
+    "intermediate_stops": ["Lalbagh", "Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Kudlu Gate"]
+  },
+  {
+    "route_id": "R133FC",
+    "route_no": "500-Q",
+    "route_name": "Marathahalli to Goraguntepalya",
+    "fromstation": "Marathahalli",
+    "tostation": "Goraguntepalya",
+    "intermediate_stops": ["Mahadevapura", "KR Puram", "Hebbal", "BEL Circle", "Yeshwanthpur"]
+  },
+  {
+    "route_id": "R134FD",
+    "route_no": "301-E",
+    "route_name": "Jayanagar 4th Block to ITI Colony (Dooravaninagar)",
+    "fromstation": "Jayanagar 4th Block",
+    "tostation": "ITI Colony",
+    "intermediate_stops": ["Madiwala", "Koramangala", "Domlur", "Indiranagar", "Tin Factory", "KR Puram"]
+  },
+  {
+    "route_id": "R135FE",
+    "route_no": "V-368D",
+    "route_name": "Majestic to Bannerghatta (AC)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bannerghatta",
+    "intermediate_stops": ["Jayanagar", "Jayadeva Hospital", "BTM Layout", "Bilekahalli", "Gottigere"]
+  },
+  {
+    "route_id": "R136FF",
+    "route_no": "250",
+    "route_name": "KR Market to Chikka Banavara",
+    "fromstation": "KR Market",
+    "tostation": "Chikka Banavara",
+    "intermediate_stops": ["Majestic", "Yeshwanthpur", "Goraguntepalya", "Peenya", "Jalahalli Cross"]
+  },
+  {
+    "route_id": "R137FG",
+    "route_no": "338",
+    "route_name": "Majestic to Whitefield (via HAL)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Old Airport Road", "HAL", "Marathahalli", "Kundalahalli"]
+  },
+  {
+    "route_id": "R138FH",
+    "route_no": "370",
+    "route_name": "KR Market to Hulimavu",
+    "fromstation": "KR Market",
+    "tostation": "Hulimavu",
+    "intermediate_stops": ["Lalbagh", "Dairy Circle", "Jayadeva Hospital", "BTM Layout", "Bilekahalli"]
+  },
+  {
+    "route_id": "R139FI",
+    "route_no": "V-501K",
+    "route_name": "Hebbal to Banashankari (AC ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["Goraguntepalya", "Sumanahalli", "Nagarbhavi", "Nayanadahalli", "Srinagar"]
+  },
+  {
+    "route_id": "R140FJ",
+    "route_no": "344",
+    "route_name": "KR Market to Jigani",
+    "fromstation": "KR Market",
+    "tostation": "Jigani",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Koppa Gate"]
+  },
+  {
+    "route_id": "R141FK",
+    "route_no": "296-F",
+    "route_name": "Majestic to Lingarajapuram",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Lingarajapuram",
+    "intermediate_stops": ["Shivajinagar", "Fraser Town", "Cox Town", "Banaswadi"]
+  },
+  {
+    "route_id": "R142FL",
+    "route_no": "329",
+    "route_name": "KR Market to Kadugodi",
+    "fromstation": "KR Market",
+    "tostation": "Kadugodi Bus Station",
+    "intermediate_stops": ["Shantinagar", "Domlur", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R143FM",
+    "route_no": "V-500P",
+    "route_name": "Banashankari to KR Puram (AC)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva Hospital", "BTM Layout", "Silk Board", "Agara", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R144FN",
+    "route_no": "240",
+    "route_name": "Majestic to Magadi",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Magadi",
+    "intermediate_stops": ["Vijayanagar", "Sunkadakatte", "Tavarekere"]
+  },
+  {
+    "route_id": "R145FO",
+    "route_no": "364",
+    "route_name": "KR Market to Bannerghatta (Anekal)",
+    "fromstation": "KR Market",
+    "tostation": "Bannerghatta",
+    "intermediate_stops": ["Lalbagh", "Jayanagar", "Jayadeva Hospital", "BTM Layout", "Gottigere"]
+  },
+  {
+    "route_id": "R146FP",
+    "route_no": "30",
+    "route_name": "Banashankari to Srinagar",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Srinagar Bus Stand",
+    "intermediate_stops": ["Padmanabhanagar", "Devegowda Petrol Bunk", "Kathriguppe"]
+  },
+  {
+    "route_id": "R147FQ",
+    "route_no": "300-K",
+    "route_name": "Shivajinagar to Kasthuri Nagar",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Kasthuri Nagar",
+    "intermediate_stops": ["Banaswadi", "Ramamurthy Nagar", "KR Puram", "Tin Factory"]
+  },
+  {
+    "route_id": "R148FR",
+    "route_no": "V-500F",
+    "route_name": "ITPL to Hebbal (AC)",
+    "fromstation": "ITPL",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Kundalahalli", "Marathahalli", "KR Puram", "Nagawara", "Manyata Tech Park"]
+  },
+  {
+    "route_id": "R149FS",
+    "route_no": "350",
+    "route_name": "KR Market to Electronic City (Phase 2)",
+    "fromstation": "KR Market",
+    "tostation": "Electronic City (Phase 2)",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Singasandra", "Hosa Road"]
+  },
+  {
+    "route_id": "R150FT",
+    "route_no": "253",
+    "route_name": "Majestic to Hesaraghatta",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Hesaraghatta",
+    "intermediate_stops": ["Yeshwanthpur", "Jalahalli Cross", "Peenya", "8th Mile", "Bagalkunte"]
+  },
+  {
+    "route_id": "R151FU",
+    "route_no": "202",
+    "route_name": "Majestic to Yelahanka (via Mysore Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri", "Nagarbhavi", "Goraguntepalya", "Hebbal"]
+  },
+  {
+    "route_id": "R152FV",
+    "route_no": "V-333P",
+    "route_name": "Majestic to Whitefield (Pattandur)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield (Pattandur Agrahara)",
+    "intermediate_stops": ["MG Road", "Tin Factory", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R153FW",
+    "route_no": "373",
+    "route_name": "KR Market to Uttarahalli",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R154FX",
+    "route_no": "504",
+    "route_name": "KR Puram to Jalahalli (Loop)",
+    "fromstation": "KR Puram",
+    "tostation": "Jalahalli Cross",
+    "intermediate_stops": ["Hebbal", "BEL Circle", "Goraguntepalya", "Peenya"]
+  },
+  {
+    "route_id": "R155FY",
+    "route_no": "15-E",
+    "route_name": "Majestic to Kumaraswamy Layout",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kumaraswamy Layout",
+    "intermediate_stops": ["KR Market", "Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R156FZ",
+    "route_no": "291-E",
+    "route_name": "Majestic to Yelahanka (via RT Nagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Shivajinagar", "RT Nagar", "Hebbal", "Byatarayanapura"]
+  },
+  {
+    "route_id": "R157GA",
+    "route_no": "326",
+    "route_name": "KR Market to Kadugodi",
+    "fromstation": "KR Market",
+    "tostation": "Kadugodi",
+    "intermediate_stops": ["Shantinagar", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R158GB",
+    "route_no": "V-500U",
+    "route_name": "Kengeri to KR Puram (ORR)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Nayanadahalli", "Nagarbhavi", "Sumanahalli", "Goraguntepalya", "Hebbal", "Nagawara"]
+  },
+  {
+    "route_id": "R159GC",
+    "route_no": "362-F",
+    "route_name": "Vivek Nagar to Electronic City",
+    "fromstation": "Vivek Nagar",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Koramangala", "Madiwala", "Silk Board", "Bommanahalli", "Kudlu Gate"]
+  },
+  {
+    "route_id": "R160GD",
+    "route_no": "228-N",
+    "route_name": "KR Market to Big Banyan Tree",
+    "fromstation": "KR Market",
+    "tostation": "Big Banyan Tree (Dodda Alada Mara)",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri", "Rajarajeshwari Medical College"]
+  },
+  {
+    "route_id": "R161GE",
+    "route_no": "402-A",
+    "route_name": "Kengeri to Yelahanka",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Nagarbhavi", "Goraguntepalya", "Yeshwanthpur", "Hebbal"]
+  },
+  {
+    "route_id": "R162GF",
+    "route_no": "356-K",
+    "route_name": "Majestic to Electronic City (via Kanakapura Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Banashankari", "Jayadeva", "BTM Layout", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R163GG",
+    "route_no": "500-CA",
+    "route_name": "Banashankari to KR Puram (ORR)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["BTM Layout", "Central Silk Board", "HSR Layout", "Agara", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R164GH",
+    "route_no": "311-F",
+    "route_name": "Majestic to KR Puram (Hanging Bridge)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "KR Puram (Hanging Bridge)",
+    "intermediate_stops": ["Shivajinagar", "Indiranagar", "Tin Factory", "Mahadevapura"]
+  },
+  {
+    "route_id": "R165GI",
+    "route_no": "218",
+    "route_name": "KR Market to JP Nagar (Sarakki)",
+    "fromstation": "KR Market",
+    "tostation": "Sarakki",
+    "intermediate_stops": ["Lalbagh", "Jayanagar", "JP Nagar 6th Phase"]
+  },
+  {
+    "route_id": "R166GJ",
+    "route_no": "337",
+    "route_name": "Majestic to Whitefield (via Marathahalli)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Domlur", "Marathahalli", "Kundalahalli", "ITPL"]
+  },
+  {
+    "route_id": "R167GK",
+    "route_no": "374",
+    "route_name": "KR Market to Padmanabhanagar",
+    "fromstation": "KR Market",
+    "tostation": "Padmanabhanagar",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Kadirenahalli Cross"]
+  },
+  {
+    "route_id": "R168GL",
+    "route_no": "V-500R",
+    "route_name": "Central Silk Board to Yeshwanthpur (ORR)",
+    "fromstation": "Central Silk Board",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["Marathahalli", "KR Puram", "Hebbal", "BEL Circle"]
+  },
+  {
+    "route_id": "R169GM",
+    "route_no": "15-F",
+    "route_name": "KR Market to Kumaraswamy Layout",
+    "fromstation": "KR Market",
+    "tostation": "Kumaraswamy Layout",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar", "ISRO Layout"]
+  },
+  {
+    "route_id": "R170GN",
+    "route_no": "292-F",
+    "route_name": "Shivajinagar to RT Nagar",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "RT Nagar",
+    "intermediate_stops": ["Cantonment", "Jayamahal", "TV Tower", "Matadahalli"]
+  },
+  {
+    "route_id": "R171GO",
+    "route_no": "324",
+    "route_name": "KR Market to Whitefield (via Varthur)",
+    "fromstation": "KR Market",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["Shantinagar", "Marathahalli", "Varthur Kodi", "Hope Farm"]
+  },
+  {
+    "route_id": "R172GP",
+    "route_no": "V-501R",
+    "route_name": "Kengeri to Hebbal (AC)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R173GQ",
+    "route_no": "358",
+    "route_name": "Majestic to Electronic City (via Adugodi)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Shantinagar", "Adugodi", "Madiwala", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R174GR",
+    "route_no": "229-N",
+    "route_name": "KR Market to Wonderla",
+    "fromstation": "KR Market",
+    "tostation": "Wonderla",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri", "Bidadi"]
+  },
+  {
+    "route_id": "R175GS",
+    "route_no": "403-A",
+    "route_name": "Yelahanka to Kengeri (via Majestic)",
+    "fromstation": "Yelahanka",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Hebbal", "Mekhri Circle", "Majestic", "Mysore Road Satellite Bus Station"]
+  },
+  {
+    "route_id": "R176GT",
+    "route_no": "356-M",
+    "route_name": "Majestic to Electronic City (via Jayadeva)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Jayanagar", "Jayadeva Hospital", "BTM Layout", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R177GU",
+    "route_no": "500-N",
+    "route_name": "Hebbal to Banashankari (via Marathahalli)",
+    "fromstation": "Hebbal",
+    "tostation": "Banashankari TTMC",
+    "intermediate_stops": ["KR Puram", "Marathahalli", "Bellandur", "Silk Board", "BTM Layout"]
+  },
+  {
+    "route_id": "R178GV",
+    "route_no": "313-F",
+    "route_name": "Majestic to KR Puram (via Old Madras Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Shivajinagar", "Halasuru", "Indiranagar", "Tin Factory"]
+  },
+  {
+    "route_id": "R179GW",
+    "route_no": "217",
+    "route_name": "KR Market to ISRO Layout",
+    "fromstation": "KR Market",
+    "tostation": "ISRO Layout",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Banashankari", "Kumaraswamy Layout"]
+  },
+  {
+    "route_id": "R180GX",
+    "route_no": "339",
+    "route_name": "Majestic to Whitefield (via Vimanapura)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Old Airport Road", "Vimanapura", "Marathahalli", "Kundalahalli"]
+  },
+  {
+    "route_id": "R181GY",
+    "route_no": "371",
+    "route_name": "KR Market to JP Nagar (Gottigere)",
+    "fromstation": "KR Market",
+    "tostation": "Gottigere",
+    "intermediate_stops": ["Lalbagh", "Jayadeva Hospital", "Bilekahalli"]
+  },
+  {
+    "route_id": "R182GZ",
+    "route_no": "V-500B",
+    "route_name": "Hebbal to ITPL (via Marathahalli)",
+    "fromstation": "Hebbal",
+    "tostation": "ITPL",
+    "intermediate_stops": ["KR Puram", "Marathahalli", "Kundalahalli", "Hope Farm"]
+  },
+  {
+    "route_id": "R183HA",
+    "route_no": "16-A",
+    "route_name": "KR Market to Jayanagar 9th Block",
+    "fromstation": "KR Market",
+    "tostation": "Jayanagar 9th Block",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R184HB",
+    "route_no": "293-C",
+    "route_name": "Shivajinagar to Hennur (Kothanur)",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Kothanur",
+    "intermediate_stops": ["Fraser Town", "Banaswadi", "Hennur Cross", "Byrathi"]
+  },
+  {
+    "route_id": "R185HC",
+    "route_no": "325",
+    "route_name": "KR Market to Kadugodi (via HAL)",
+    "fromstation": "KR Market",
+    "tostation": "Kadugodi",
+    "intermediate_stops": ["Shantinagar", "Old Airport Road", "Marathahalli", "Hope Farm"]
+  },
+  {
+    "route_id": "R186HD",
+    "route_no": "V-502K",
+    "route_name": "Kengeri to Yeshwanthpur (AC)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R187HE",
+    "route_no": "359",
+    "route_name": "Majestic to Electronic City (via Corporation)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Corporation", "Shantinagar", "Madiwala", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R188HF",
+    "route_no": "230-M",
+    "route_name": "KR Market to Ramohalli",
+    "fromstation": "KR Market",
+    "tostation": "Ramohalli",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri", "Rajarajeshwari Medical College"]
+  },
+  {
+    "route_id": "R189HG",
+    "route_no": "405-A",
+    "route_name": "Yelahanka to Kengeri (via Ring Road)",
+    "fromstation": "Yelahanka",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Hebbal", "Goraguntepalya", "Sumanahalli", "Nagarbhavi"]
+  },
+  {
+    "route_id": "R190HH",
+    "route_no": "356-P",
+    "route_name": "Basaveshwaranagar to Electronic City",
+    "fromstation": "Basaveshwaranagar",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Vijayanagar", "Majestic", "Shantinagar", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R191HI",
+    "route_no": "500-Y",
+    "route_name": "Banashankari to Hebbal (ORR)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Jayadeva", "BTM Layout", "Silk Board", "Marathahalli", "KR Puram", "Nagawara"]
+  },
+  {
+    "route_id": "R192HJ",
+    "route_no": "310-F",
+    "route_name": "Majestic to KR Puram (Railway Station)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "KR Puram Railway Station",
+    "intermediate_stops": ["Shivajinagar", "Indiranagar", "Tin Factory", "Mahadevapura"]
+  },
+  {
+    "route_id": "R193HK",
+    "route_no": "216",
+    "route_name": "KR Market to JP Nagar 9th Phase",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar 9th Phase",
+    "intermediate_stops": ["Lalbagh", "Jayanagar", "Sarakki", "JP Nagar 6th Phase"]
+  },
+  {
+    "route_id": "R194HL",
+    "route_no": "345",
+    "route_name": "KR Market to Electronic City (via BTM)",
+    "fromstation": "KR Market",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Lalbagh", "Jayadeva Hospital", "BTM Layout", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R195HM",
+    "route_no": "375",
+    "route_name": "KR Market to Kengeri (Uttarahalli)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar", "Uttarahalli"]
+  },
+  {
+    "route_id": "R196HN",
+    "route_no": "V-500E",
+    "route_name": "Hebbal to Electronic City (Wipro)",
+    "fromstation": "Hebbal",
+    "tostation": "Electronic City (Wipro)",
+    "intermediate_stops": ["KR Puram", "Marathahalli", "Bellandur", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R197HO",
+    "route_no": "17-A",
+    "route_name": "KR Market to Jayanagar 5th Block",
+    "fromstation": "KR Market",
+    "tostation": "Jayanagar 5th Block",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R198HP",
+    "route_no": "295-A",
+    "route_name": "Shivajinagar to Hennur (Geddalahalli)",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Geddalahalli (Hennur)",
+    "intermediate_stops": ["Fraser Town", "Banaswadi", "Kalyan Nagar", "Hennur Cross"]
+  },
+  {
+    "route_id": "R199HQ",
+    "route_no": "321",
+    "route_name": "KR Market to Whitefield (via Airport Road)",
+    "fromstation": "KR Market",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["Shantinagar", "Old Airport Road", "Marathahalli", "Kundalahalli", "ITPL"]
+  },
+  {
+    "route_id": "R200HR",
+    "route_no": "V-502J",
+    "route_name": "Kengeri to Yeshwanthpur (via Tumkur Road)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Peenya", "Goraguntepalya"]
+  },
+  {
+    "route_id": "R201HS",
+    "route_no": "361",
+    "route_name": "Majestic to Electronic City (via Dairy Circle)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Shantinagar", "Dairy Circle", "Madiwala", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R202HT",
+    "route_no": "231-N",
+    "route_name": "KR Market to Tavarekere (Mysore Road)",
+    "fromstation": "KR Market",
+    "tostation": "Tavarekere (Mysore Road)",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri"]
+  },
+  {
+    "route_id": "R203HU",
+    "route_no": "408-A",
+    "route_name": "Yelahanka to Kengeri (via Hebbal)",
+    "fromstation": "Yelahanka",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Hebbal", "Mekhri Circle", "Majestic", "Mysore Road"]
+  },
+  {
+    "route_id": "R204HV",
+    "route_no": "357-A",
+    "route_name": "Majestic to Electronic City (Infosys)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City (Infosys)",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R205HW",
+    "route_no": "500-Z",
+    "route_name": "Banashankari to KR Puram (via HSR)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "BTM Layout", "Silk Board", "HSR Layout", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R206HX",
+    "route_no": "312-B",
+    "route_name": "Majestic to KR Puram (via CV Raman Nagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["MG Road", "Indiranagar", "CV Raman Nagar", "Mahadevapura"]
+  },
+  {
+    "route_id": "R207HY",
+    "route_no": "219-A",
+    "route_name": "KR Market to JP Nagar (Kanakapura Road)",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar",
+    "intermediate_stops": ["Lalbagh", "Banashankari", "Kanakapura Road", "Sarakki"]
+  },
+  {
+    "route_id": "R208HZ",
+    "route_no": "332",
+    "route_name": "Majestic to Whitefield (via Mahadevapura)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Tin Factory", "Mahadevapura", "Graphite India", "Hope Farm"]
+  },
+  {
+    "route_id": "R209IA",
+    "route_no": "376",
+    "route_name": "KR Market to Uttarahalli",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R210IB",
+    "route_no": "V-500W",
+    "route_name": "Hebbal to Marathahalli (AC)",
+    "fromstation": "Hebbal",
+    "tostation": "Marathahalli",
+    "intermediate_stops": ["Manyata Tech Park", "Nagawara", "Banaswadi", "KR Puram", "Mahadevapura"]
+  },
+  {
+    "route_id": "R211IC",
+    "route_no": "18",
+    "route_name": "KR Market to Jayanagar 9th Block (West)",
+    "fromstation": "KR Market",
+    "tostation": "Jayanagar 9th Block",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R212ID",
+    "route_no": "297-B",
+    "route_name": "Shivajinagar to Yelahanka (Bagalur Cross)",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Bagalur Cross",
+    "intermediate_stops": ["RT Nagar", "Hebbal", "Yelahanka", "Bellary Road"]
+  },
+  {
+    "route_id": "R213IE",
+    "route_no": "322-N",
+    "route_name": "KR Market to Whitefield (via Old Madras Road)",
+    "fromstation": "KR Market",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "Mahadevapura", "ITPL"]
+  },
+  {
+    "route_id": "R214IF",
+    "route_no": "V-502L",
+    "route_name": "Kengeri to Yeshwanthpur (AC ORR)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya"]
+  },
+  {
+    "route_id": "R215IG",
+    "route_no": "363-A",
+    "route_name": "Majestic to Electronic City (Phase 2)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City (Phase 2)",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Hosa Road"]
+  },
+  {
+    "route_id": "R216IH",
+    "route_no": "233-E",
+    "route_name": "KR Market to Kengeri (Gollahalli)",
+    "fromstation": "KR Market",
+    "tostation": "Gollahalli",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri"]
+  },
+  {
+    "route_id": "R217II",
+    "route_no": "409",
+    "route_name": "Yelahanka to Kengeri (via Peenya)",
+    "fromstation": "Yelahanka",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Hebbal", "Yeshwanthpur", "Peenya", "Nagarbhavi"]
+  },
+  {
+    "route_id": "R218IJ",
+    "route_no": "356-Q",
+    "route_name": "Majestic to Electronic City (AC)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R219IK",
+    "route_no": "500-G",
+    "route_name": "Banashankari to KR Puram (via Bellandur)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "BTM Layout", "Silk Board", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R220IL",
+    "route_no": "316-B",
+    "route_name": "Majestic to Boodigere",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Boodigere",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R221IM",
+    "route_no": "213",
+    "route_name": "KR Market to Harohalli",
+    "fromstation": "KR Market",
+    "tostation": "Harohalli",
+    "intermediate_stops": ["Lalbagh", "Banashankari", "Kanakapura Road", "Kaggalipura"]
+  },
+  {
+    "route_id": "R222IN",
+    "route_no": "330-K",
+    "route_name": "Majestic to KR Puram (via Indiranagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["MG Road", "Trinity", "Indiranagar", "Tin Factory"]
+  },
+  {
+    "route_id": "R223IO",
+    "route_no": "377",
+    "route_name": "KR Market to Uttarahalli (Subramanyapura)",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar", "Subramanyapura"]
+  },
+  {
+    "route_id": "R224IP",
+    "route_no": "V-500T",
+    "route_name": "Hebbal to Silk Board (ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Manyata Tech Park", "KR Puram", "Marathahalli", "Bellandur", "Agara", "HSR Layout"]
+  },
+  {
+    "route_id": "R225IQ",
+    "route_no": "19-A",
+    "route_name": "KR Market to Jayanagar 9th Block (South)",
+    "fromstation": "KR Market",
+    "tostation": "Jayanagar 9th Block",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R226IR",
+    "route_no": "299-B",
+    "route_name": "Shivajinagar to Yelahanka (Chikkajala)",
+    "fromstation": "Shivajinagar Bus Station",
+    "tostation": "Chikkajala",
+    "intermediate_stops": ["RT Nagar", "Hebbal", "Yelahanka", "BIAL"]
+  },
+  {
+    "route_id": "R227IS",
+    "route_no": "328-K",
+    "route_name": "KR Market to Whitefield (via Marathahalli)",
+    "fromstation": "KR Market",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["Shantinagar", "Domlur", "Marathahalli", "Kundalahalli", "ITPL"]
+  },
+  {
+    "route_id": "R228IT",
+    "route_no": "V-502M",
+    "route_name": "Kengeri to Yeshwanthpur (ORR)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Yeshwanthpur TTMC",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya"]
+  },
+  {
+    "route_id": "R229IU",
+    "route_no": "364-B",
+    "route_name": "Majestic to Electronic City (Attibele)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Attibele",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Electronic City", "Chandapura"]
+  },
+  {
+    "route_id": "R230IV",
+    "route_no": "236",
+    "route_name": "KR Market to Kengeri (Mylasandra)",
+    "fromstation": "KR Market",
+    "tostation": "Mylasandra",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri", "Rajarajeshwari Nagar Gate"]
+  },
+  {
+    "route_id": "R231IW",
+    "route_no": "413-A",
+    "route_name": "Yelahanka to Kengeri (via Banashankari)",
+    "fromstation": "Yelahanka",
+    "tostation": "Kengeri TTMC",
+    "intermediate_stops": ["Hebbal", "Majestic", "Banashankari", "Uttarahalli"]
+  },
+  {
+    "route_id": "R232IX",
+    "route_no": "356-S",
+    "route_name": "Majestic to Electronic City (Wipro)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City (Wipro)",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Konappana Agrahara"]
+  },
+  {
+    "route_id": "R233IY",
+    "route_no": "500-H",
+    "route_name": "Banashankari to KR Puram (via Agara)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "BTM Layout", "Silk Board", "Agara", "Marathahalli"]
+  },
+  {
+    "route_id": "R234IZ",
+    "route_no": "318",
+    "route_name": "Majestic to Budigere Cross",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Budigere Cross",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R235JA",
+    "route_no": "214",
+    "route_name": "KR Market to Kanakapura",
+    "fromstation": "KR Market",
+    "tostation": "Kanakapura",
+    "intermediate_stops": ["Lalbagh", "Banashankari", "Kaggalipura", "Harohalli"]
+  },
+  {
+    "route_id": "R236JB",
+    "route_no": "334-K",
+    "route_name": "Majestic to Whitefield (via BEML)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Indiranagar", "BEML", "Marathahalli", "Kundalahalli"]
+  },
+  {
+    "route_id": "R237JC",
+    "route_no": "379",
+    "route_name": "KR Market to Uttarahalli (Kengeri Road)",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R238JD",
+    "route_no": "V-500V",
+    "route_name": "Hebbal to Silk Board (AC)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Nagawara", "KR Puram", "Marathahalli", "Bellandur", "Agara"]
+  },
+  {
+    "route_id": "R239JE",
+    "route_no": "20-A",
+    "route_name": "KR Market to Jayanagar 9th Block (East)",
+    "fromstation": "KR Market",
+    "tostation": "Jayanagar 9th Block",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R240JF",
+    "route_no": "400-K",
+    "route_name": "Hebbal to Ramamurthy Nagar",
+    "fromstation": "Hebbal",
+    "tostation": "Ramamurthy Nagar",
+    "intermediate_stops": ["Nagawara", "Banaswadi", "KR Puram", "Kasthuri Nagar"]
+  },
+  {
+    "route_id": "R241JG",
+    "route_no": "328-C",
+    "route_name": "KR Market to Hoskote",
+    "fromstation": "KR Market",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R242JH",
+    "route_no": "V-502N",
+    "route_name": "Kengeri to Hebbal (ORR AC)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R243JI",
+    "route_no": "365-C",
+    "route_name": "Majestic to Bannerghatta (Jigani)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Jigani",
+    "intermediate_stops": ["Shantinagar", "Jayadeva", "Gottigere", "Bannerghatta"]
+  },
+  {
+    "route_id": "R244JJ",
+    "route_no": "237",
+    "route_name": "KR Market to Kengeri (RR Nagar)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "RR Nagar Gate", "Kengeri"]
+  },
+  {
+    "route_id": "R245JK",
+    "route_no": "414",
+    "route_name": "Vijayanagar to K Narayanapura",
+    "fromstation": "Vijayanagar",
+    "tostation": "K Narayanapura",
+    "intermediate_stops": ["Rajajinagar", "Yeshwanthpur", "Hebbal", "Nagawara", "Hennur"]
+  },
+  {
+    "route_id": "R246JL",
+    "route_no": "356-W",
+    "route_name": "Majestic to Electronic City (Hosa Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Hosa Road"]
+  },
+  {
+    "route_id": "R247JM",
+    "route_no": "500-J",
+    "route_name": "Banashankari to KR Puram (Loop)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "Silk Board", "Agara", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R248JN",
+    "route_no": "319-A",
+    "route_name": "Majestic to BEML Layout (KR Puram)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "BEML Layout",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "KR Puram", "Mahadevapura"]
+  },
+  {
+    "route_id": "R249JO",
+    "route_no": "212",
+    "route_name": "KR Market to JP Nagar 6th Phase",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar 6th Phase",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar", "Sarakki"]
+  },
+  {
+    "route_id": "R250JP",
+    "route_id": "R250JP",
+    "route_no": "333-A",
+    "route_name": "Majestic to Whitefield (ITPL)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "ITPL",
+    "intermediate_stops": ["MG Road", "Tin Factory", "Marathahalli", "Kundalahalli", "Hope Farm"]
+  },
+  {
+    "route_id": "R251JQ",
+    "route_no": "380",
+    "route_name": "KR Market to Uttarahalli (Padmanabhanagar)",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R252JR",
+    "route_no": "V-500Y",
+    "route_name": "Hebbal to Silk Board (ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Nagawara", "KR Puram", "Marathahalli", "Bellandur", "Agara"]
+  },
+  {
+    "route_id": "R253JS",
+    "route_no": "22-A",
+    "route_name": "KR Market to Jayanagar 9th Block (West)",
+    "fromstation": "KR Market",
+    "tostation": "Jayanagar 9th Block",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar 4th Block"]
+  },
+  {
+    "route_id": "R254JT",
+    "route_no": "400-A",
+    "route_name": "Hebbal to Banaswadi",
+    "fromstation": "Hebbal",
+    "tostation": "Banaswadi",
+    "intermediate_stops": ["Nagawara", "Kalyan Nagar", "HRBR Layout", "Ramamurthy Nagar"]
+  },
+  {
+    "route_id": "R255JU",
+    "route_no": "328-N",
+    "route_name": "KR Market to Hoskote (via Tin Factory)",
+    "fromstation": "KR Market",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R256JV",
+    "route_no": "V-502P",
+    "route_name": "Kengeri to Hebbal (Nagarbhavi)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R257JW",
+    "route_no": "366-E",
+    "route_name": "Majestic to Bannerghatta (Anekal)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Anekal",
+    "intermediate_stops": ["Shantinagar", "Jayadeva", "Gottigere", "Bannerghatta", "Jigani"]
+  },
+  {
+    "route_id": "R258JX",
+    "route_no": "241-N",
+    "route_name": "KR Market to Kengeri (Yeshwanthpur)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Majestic", "Yeshwanthpur", "Goraguntepalya", "Nagarbhavi"]
+  },
+  {
+    "route_id": "R259JY",
+    "route_no": "415-A",
+    "route_name": "Vijayanagar to Yelahanka",
+    "fromstation": "Vijayanagar",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Rajajinagar", "Yeshwanthpur", "Hebbal", "Byatarayanapura"]
+  },
+  {
+    "route_id": "R260JZ",
+    "route_no": "356-X",
+    "route_name": "Majestic to Electronic City (Chandapura)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Chandapura",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Electronic City"]
+  },
+  {
+    "route_id": "R261KA",
+    "route_no": "500-K",
+    "route_name": "Banashankari to KR Puram (via Silk Board)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "BTM Layout", "Silk Board", "Agara", "Marathahalli"]
+  },
+  {
+    "route_id": "R262KB",
+    "route_no": "320-H",
+    "route_name": "Majestic to Hope Farm (via Halasuru)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Hope Farm",
+    "intermediate_stops": ["Shivajinagar", "Halasuru", "Tin Factory", "Marathahalli", "ITPL"]
+  },
+  {
+    "route_id": "R263KC",
+    "route_no": "211",
+    "route_name": "KR Market to Bidadi",
+    "fromstation": "KR Market",
+    "tostation": "Bidadi",
+    "intermediate_stops": ["Mysore Road Satellite Bus Station", "Kengeri"]
+  },
+  {
+    "route_id": "R264KD",
+    "route_no": "335-K",
+    "route_name": "Majestic to Whitefield (via HAL)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Old Airport Road", "HAL", "Marathahalli", "Kundalahalli"]
+  },
+  {
+    "route_id": "R265KE",
+    "route_no": "381",
+    "route_name": "KR Market to Uttarahalli (Gottigere)",
+    "fromstation": "KR Market",
+    "tostation": "Gottigere",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar", "Uttarahalli"]
+  },
+  {
+    "route_id": "R266KF",
+    "route_no": "V-500Z",
+    "route_name": "Hebbal to Silk Board (Express)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Nagawara", "KR Puram", "Marathahalli", "Bellandur"]
+  },
+  {
+    "route_id": "R267KG",
+    "route_no": "24-A",
+    "route_name": "KR Market to JP Nagar 3rd Phase",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar 3rd Phase",
+    "intermediate_stops": ["Lalbagh", "South End Circle", "Jayanagar", "JP Nagar"]
+  },
+  {
+    "route_id": "R268KH",
+    "route_no": "400-B",
+    "route_name": "Hebbal to KR Puram (Banaswadi)",
+    "fromstation": "Hebbal",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Nagawara", "Banaswadi", "Ramamurthy Nagar"]
+  },
+  {
+    "route_id": "R269KI",
+    "route_no": "328-P",
+    "route_name": "KR Market to Hoskote (via KR Puram)",
+    "fromstation": "KR Market",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R270KJ",
+    "route_no": "V-502Q",
+    "route_name": "Kengeri to Hebbal (Sumanahalli)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R271KK",
+    "route_no": "368-F",
+    "route_name": "Majestic to Bannerghatta (Koppa Gate)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Koppa Gate",
+    "intermediate_stops": ["Shantinagar", "Jayadeva", "Gottigere", "Bannerghatta"]
+  },
+  {
+    "route_id": "R272KL",
+    "route_no": "242-A",
+    "route_name": "KR Market to Kengeri (via Magadi Road)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Majestic", "Vijayanagar", "Sunkadakatte", "Nagarbhavi"]
+  },
+  {
+    "route_id": "R273KM",
+    "route_no": "415-B",
+    "route_name": "Vijayanagar to Yelahanka (via RT Nagar)",
+    "fromstation": "Vijayanagar",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Rajajinagar", "Malleshwaram", "Mekhri Circle", "RT Nagar", "Hebbal"]
+  },
+  {
+    "route_id": "R274KN",
+    "route_no": "356-Y",
+    "route_name": "Majestic to Electronic City (Bommasandra)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bommasandra",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Bommanahalli", "Electronic City", "Chandapura"]
+  },
+  {
+    "route_id": "R275KO",
+    "route_no": "500-L",
+    "route_name": "Banashankari to KR Puram (via HSR)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "Silk Board", "HSR Layout", "Agara", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R276KP",
+    "route_no": "320-K",
+    "route_name": "Majestic to Kadugodi (via Shivajinagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kadugodi",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R277KQ",
+    "route_no": "210-G",
+    "route_name": "Majestic to ISRO Layout",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "ISRO Layout",
+    "intermediate_stops": ["KR Market", "Banashankari", "Kumaraswamy Layout"]
+  },
+  {
+    "route_id": "R278KR",
+    "route_no": "335-M",
+    "route_name": "Majestic to Whitefield (via MG Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["MG Road", "Trinity", "Indiranagar", "Tin Factory", "Marathahalli", "ITPL"]
+  },
+  {
+    "route_id": "R279KS",
+    "route_no": "382",
+    "route_name": "KR Market to Uttarahalli (Kanakapura Road)",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R280KT",
+    "route_no": "V-500X",
+    "route_name": "Hebbal to Silk Board (Marathahalli)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Nagawara", "KR Puram", "Marathahalli", "Bellandur", "Agara"]
+  },
+  {
+    "route_id": "R281KU",
+    "route_no": "25-B",
+    "route_name": "KR Market to JP Nagar 3rd Phase (BTM)",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar 3rd Phase",
+    "intermediate_stops": ["Lalbagh", "Shantinagar", "Dairy Circle", "BTM Layout", "JP Nagar"]
+  },
+  {
+    "route_id": "R282KV",
+    "route_no": "400-C",
+    "route_name": "Hebbal to KR Puram (Ramamurthy Nagar)",
+    "fromstation": "Hebbal",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Nagawara", "Banaswadi", "Ramamurthy Nagar"]
+  },
+  {
+    "route_id": "R283KW",
+    "route_no": "328-Q",
+    "route_name": "KR Market to Hoskote (via Majestic)",
+    "fromstation": "KR Market",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R284KX",
+    "route_no": "V-502R",
+    "route_name": "Kengeri to Hebbal (Ring Road)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R285KY",
+    "route_no": "369-A",
+    "route_name": "Majestic to Bannerghatta (Jayanagar)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bannerghatta",
+    "intermediate_stops": ["Jayanagar", "Jayadeva", "Gottigere"]
+  },
+  {
+    "route_id": "R286KZ",
+    "route_no": "243-A",
+    "route_name": "KR Market to Kengeri (Nagarbhavi)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Majestic", "Vijayanagar", "Nagarbhavi", "Bangalore University"]
+  },
+  {
+    "route_id": "R287LA",
+    "route_no": "415-C",
+    "route_name": "Vijayanagar to Yelahanka (Hebbal)",
+    "fromstation": "Vijayanagar",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Rajajinagar", "Yeshwanthpur", "Mekhri Circle", "Hebbal"]
+  },
+  {
+    "route_id": "R288LB",
+    "route_no": "356-Z",
+    "route_name": "Majestic to Electronic City (Anekal)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Anekal",
+    "intermediate_stops": ["Shantinagar", "Madiwala", "Silk Board", "Electronic City", "Chandapura"]
+  },
+  {
+    "route_id": "R289LC",
+    "route_no": "500-M",
+    "route_name": "Banashankari to KR Puram (Marathahalli)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "Silk Board", "Agara", "Bellandur", "Marathahalli"]
+  },
+  {
+    "route_id": "R290LD",
+    "route_no": "321-F",
+    "route_name": "Majestic to Kadugodi (via HAL)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kadugodi",
+    "intermediate_stops": ["MG Road", "Old Airport Road", "HAL", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R291LE",
+    "route_no": "210-J",
+    "route_name": "Majestic to Kumaraswamy Layout",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kumaraswamy Layout",
+    "intermediate_stops": ["KR Market", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R292LF",
+    "route_no": "335-N",
+    "route_name": "Majestic to Whitefield (via Old Madras Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "KR Puram", "Mahadevapura", "ITPL"]
+  },
+  {
+    "route_id": "R293LG",
+    "route_no": "385",
+    "route_name": "KR Market to Uttarahalli (Banashankari)",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R294LH",
+    "route_no": "V-500W",
+    "route_name": "Hebbal to Silk Board (via KR Puram)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Nagawara", "KR Puram", "Marathahalli", "Bellandur", "Agara"]
+  },
+  {
+    "route_id": "R295LI",
+    "route_no": "26-A",
+    "route_name": "KR Market to JP Nagar 6th Phase (Byrasandra)",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar 6th Phase",
+    "intermediate_stops": ["Lalbagh", "Jayanagar", "Byrasandra", "Sarakki"]
+  },
+  {
+    "route_id": "R296LJ",
+    "route_no": "400-D",
+    "route_name": "Hebbal to KR Puram (Banaswadi)",
+    "fromstation": "Hebbal",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Nagawara", "Banaswadi", "Ramamurthy Nagar"]
+  },
+  {
+    "route_id": "R297LK",
+    "route_no": "328-R",
+    "route_name": "KR Market to Hoskote (via Old Madras Road)",
+    "fromstation": "KR Market",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Majestic", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R298LL",
+    "route_no": "V-502S",
+    "route_name": "Kengeri to Hebbal (via Peenya)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Nagarbhavi", "Sumanahalli", "Peenya", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R299LM",
+    "route_no": "370-A",
+    "route_name": "Majestic to Bannerghatta (via Dairy Circle)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bannerghatta",
+    "intermediate_stops": ["Shantinagar", "Dairy Circle", "Jayadeva", "Gottigere"]
+  },
+  {
+    "route_id": "R300LN",
+    "route_no": "245-A",
+    "route_name": "KR Market to Kengeri (Magadi Road)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Majestic", "Vijayanagar", "Sunkadakatte", "Nagarbhavi"]
+  },
+  {
+    "route_id": "R301LO",
+    "route_no": "415-D",
+    "route_name": "Vijayanagar to Yelahanka (Yeshwanthpur)",
+    "fromstation": "Vijayanagar",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Rajajinagar", "Yeshwanthpur", "Hebbal"]
+  },
+  {
+    "route_id": "R302LP",
+    "route_no": "356-V",
+    "route_name": "Majestic to Electronic City (Sarjapur Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Electronic City",
+    "intermediate_stops": ["Shantinagar", "Koramangala", "Agara", "Silk Board", "Bommanahalli"]
+  },
+  {
+    "route_id": "R303LQ",
+    "route_no": "500-P",
+    "route_name": "Banashankari to KR Puram (via BTM)",
+    "fromstation": "Banashankari TTMC",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Jayadeva", "BTM Layout", "Silk Board", "Agara", "Marathahalli"]
+  },
+  {
+    "route_id": "R304LR",
+    "route_no": "321-J",
+    "route_name": "Majestic to Kadugodi (via Vimanapura)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kadugodi",
+    "intermediate_stops": ["MG Road", "Old Airport Road", "Vimanapura", "Marathahalli", "ITPL", "Hope Farm"]
+  },
+  {
+    "route_id": "R305LS",
+    "route_no": "210-K",
+    "route_name": "Majestic to Kumaraswamy Layout (West)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Kumaraswamy Layout",
+    "intermediate_stops": ["KR Market", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R306LT",
+    "route_no": "335-P",
+    "route_name": "Majestic to Whitefield (via KR Puram)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Whitefield",
+    "intermediate_stops": ["Shivajinagar", "Tin Factory", "KR Puram", "Mahadevapura", "Graphite India"]
+  },
+  {
+    "route_id": "R307LU",
+    "route_no": "388",
+    "route_name": "KR Market to Uttarahalli (BSK 6th Stage)",
+    "fromstation": "KR Market",
+    "tostation": "Uttarahalli",
+    "intermediate_stops": ["Basavanagudi", "Banashankari", "Padmanabhanagar"]
+  },
+  {
+    "route_id": "R308LV",
+    "route_no": "V-500AB",
+    "route_name": "Hebbal to Silk Board (via ORR)",
+    "fromstation": "Hebbal",
+    "tostation": "Central Silk Board",
+    "intermediate_stops": ["Nagawara", "KR Puram", "Marathahalli", "Bellandur", "Agara"]
+  },
+  {
+    "route_id": "R309LW",
+    "route_no": "27-A",
+    "route_name": "KR Market to JP Nagar 6th Phase (BTM)",
+    "fromstation": "KR Market",
+    "tostation": "JP Nagar 6th Phase",
+    "intermediate_stops": ["Lalbagh", "Shantinagar", "Dairy Circle", "BTM Layout", "Sarakki"]
+  },
+  {
+    "route_id": "R310LX",
+    "route_no": "400-F",
+    "route_name": "Hebbal to KR Puram (Kalyan Nagar)",
+    "fromstation": "Hebbal",
+    "tostation": "KR Puram",
+    "intermediate_stops": ["Nagawara", "Kalyan Nagar", "Banaswadi", "Ramamurthy Nagar"]
+  },
+  {
+    "route_id": "R311LY",
+    "route_no": "328-S",
+    "route_name": "KR Market to Hoskote (via Shivajinagar)",
+    "fromstation": "KR Market",
+    "tostation": "Hoskote",
+    "intermediate_stops": ["Majestic", "Shivajinagar", "Tin Factory", "KR Puram", "Medahalli"]
+  },
+  {
+    "route_id": "R312LZ",
+    "route_no": "V-502T",
+    "route_name": "Kengeri to Hebbal (via Bangalore University)",
+    "fromstation": "Kengeri TTMC",
+    "tostation": "Hebbal",
+    "intermediate_stops": ["Bangalore University", "Nagarbhavi", "Sumanahalli", "Goraguntepalya", "BEL Circle"]
+  },
+  {
+    "route_id": "R313MA",
+    "route_no": "371-A",
+    "route_name": "Majestic to Bannerghatta (via Kanakapura Road)",
+    "fromstation": "Kempegowda Bus Station (Majestic)",
+    "tostation": "Bannerghatta",
+    "intermediate_stops": ["Banashankari", "Jayadeva", "Gottigere"]
+  },
+  {
+    "route_id": "R314MB",
+    "route_no": "248-A",
+    "route_name": "KR Market to Kengeri (Peenya)",
+    "fromstation": "KR Market",
+    "tostation": "Kengeri",
+    "intermediate_stops": ["Majestic", "Yeshwanthpur", "Peenya", "Nagarbhavi"]
+  },
+  {
+    "route_id": "R315MC",
+    "route_no": "415-E",
+    "route_name": "Vijayanagar to Yelahanka (Mekhri Circle)",
+    "fromstation": "Vijayanagar",
+    "tostation": "Yelahanka",
+    "intermediate_stops": ["Rajajinagar", "Malleshwaram", "Mekhri Circle", "Hebbal"]
+  }
+]
