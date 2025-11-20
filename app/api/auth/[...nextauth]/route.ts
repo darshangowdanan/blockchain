@@ -1,39 +1,48 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import { compare } from "bcryptjs"
-import pool from "@/lib/db"
+import { connectDB } from "@/lib/mongodb"
+import User from "@/models/User"
 
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
+
       async authorize(credentials) {
-        const { email, password } = credentials!
+        await connectDB()
 
-        // Check if user exists
-        const result = await pool.query("SELECT * FROM users WHERE email = $1", [email])
-        const user = result.rows[0]
-        if (!user) throw new Error("User not found")
+        const user = await User.findOne({ email: credentials?.email })
+        if (!user) throw new Error("No user found")
 
-        // Compare password
-        const valid = await compare(password, user.password_hash)
-        if (!valid) throw new Error("Invalid password")
+        const passwordMatch = await compare(
+          credentials!.password,
+          user.password
+        )
 
-        // Return user object
-        return { id: user.id, name: user.full_name, email: user.email }
+        if (!passwordMatch) throw new Error("Invalid password")
+
+        return {
+          id: user._id.toString(),
+          name: user.full_name,
+          email: user.email,
+        }
       },
     }),
   ],
+
   session: {
     strategy: "jwt",
   },
+
   pages: {
-    signIn: "/", // optional, your custom sign-in page
+    signIn: "/signin",
   },
+
   secret: process.env.NEXTAUTH_SECRET,
 })
 
