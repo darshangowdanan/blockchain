@@ -1,24 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { Users, MapPin } from "lucide-react";
+import { Users, MapPin, Route } from "lucide-react";
 import { useState, useEffect, type FormEvent } from "react";
+
+type Stop = {
+  _id: string;
+  stop_id: number;
+  stop_name: string;
+  lat: number;
+  lng: number;
+};
+
+type Journey = {
+  from: string;
+  to: string;
+  passengers: number;
+};
 
 export default function BookingSection() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
-  const [message, setMessage] = useState("");
+  const [fromId, setFromId] = useState<number | null>(null);
+  const [toId, setToId] = useState<number | null>(null);
   const [selectedTickets, setSelectedTickets] = useState(1);
-  const [passengers, setPassengers] = useState<
-    { id: number; from: string; to: string; count: number; price: number }[]
-  >([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  const [fromSuggestions, setFromSuggestions] = useState<string[]>([]);
-  const [toSuggestions, setToSuggestions] = useState<string[]>([]);
-  const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(
-    null
-  );
+  const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [fromSuggestions, setFromSuggestions] = useState<Stop[]>([]);
+  const [toSuggestions, setToSuggestions] = useState<Stop[]>([]);
+  const [journeys, setJourneys] = useState<Journey[]>([]);
 
   const messages = [
     "Secure. Smart. Seamless Ticketing.",
@@ -26,19 +35,16 @@ export default function BookingSection() {
     "Travel Made Transparent.",
   ];
 
-  // Typing animation for tagline
+  // Typing animation
   useEffect(() => {
-    let i = 0,
-      j = 0,
-      current = "",
-      typing = true;
+    let i = 0, j = 0, current = "", typing = true;
 
     const type = () => {
       if (typing) {
         if (j < messages[i].length) {
           current += messages[i][j];
-          setMessage(current);
           j++;
+          setMessage(current);
         } else {
           typing = false;
           setTimeout(type, 1200);
@@ -47,8 +53,8 @@ export default function BookingSection() {
       } else {
         if (j > 0) {
           current = current.slice(0, -1);
-          setMessage(current);
           j--;
+          setMessage(current);
         } else {
           typing = true;
           i = (i + 1) % messages.length;
@@ -56,115 +62,77 @@ export default function BookingSection() {
       }
       setTimeout(type, typing ? 60 : 40);
     };
+
+    const setMessage = (msg: string) => {
+      const element = document.getElementById("typingMessage");
+      if (element) {
+        element.textContent = msg;
+      }
+    };
+
     type();
   }, []);
 
-  // Fetch stop suggestions
   const fetchSuggestions = async (type: "from" | "to", query: string) => {
     try {
       const res = await fetch(`/api/stops?search=${encodeURIComponent(query)}`);
-      const data = await res.json();
+      const data = await res.json(); 
       if (type === "from") setFromSuggestions(data);
       else setToSuggestions(data);
     } catch (err) {
-      console.error("Error fetching suggestions:", err);
+      console.error("Suggestion Error:", err);
     }
   };
 
-  // Calculate fare based on number of stops
-  const calculateFare = (fromStop: string, toStop: string): number => {
-    // Fake stop distance for now, later you can compute actual distance
-    const allStops = [
-      "Kempegowda Bus Station (Majestic)",
-      "Corporation Circle",
-      "MG Road Metro",
-      "Trinity Circle",
-      "Indiranagar",
-      "Tin Factory",
-      "KR Puram",
-      "Marathahalli",
-      "Graphite India",
-      "Hope Farm Junction",
-      "Whitefield TTMC",
-    ];
-
-    const fromIndex = allStops.indexOf(fromStop);
-    const toIndex = allStops.indexOf(toStop);
-
-    if (fromIndex === -1 || toIndex === -1) return 5;
-
-    const stopCount = Math.abs(toIndex - fromIndex);
-    const fareUnits = Math.ceil(stopCount / 2); // every 2 stops → ₹5
-    return fareUnits * 5 || 5;
-  };
-
-  const handleConfirm = (e: FormEvent<HTMLFormElement>): void => {
+  const handleConfirm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!from || !to) {
-      alert("Please enter both From and To locations.");
+    if (!fromId || !toId) {
+      alert("Please select valid stops.");
       return;
     }
-
-    const baseFare = calculateFare(from, to);
-    const total = baseFare * selectedTickets;
-
-    const newBooking = {
-      id: Date.now(),
-      from,
-      to,
-      count: selectedTickets,
-      price: total,
-    };
-
-    setPassengers([...passengers, newBooking]);
-    setTotalPrice((prev) => prev + total);
+    // Add journey to the list
+    setJourneys([...journeys, { from, to, passengers: selectedTickets }]);
+    // Reset inputs
     setFrom("");
     setTo("");
+    setFromId(null);
+    setToId(null);
     setSelectedTickets(1);
-    setFromSuggestions([]);
-    setToSuggestions([]);
   };
 
-  const handleReset = () => {
-    setPassengers([]);
-    setTotalPrice(0);
-  };
-
-  const renderSuggestions = (
-    suggestions: string[],
-    onSelect: (value: string) => void
-  ) => (
-    <ul className="absolute z-20 bg-slate-900/95 border border-white/10 mt-2 rounded-xl max-h-56 overflow-y-auto w-full shadow-2xl backdrop-blur-lg scrollbar-thin scrollbar-thumb-white/10">
-      {suggestions.map((stop, i) => (
+  const renderSuggestions = (suggestions: Stop[], onSelect: (s: Stop) => void) => (
+    <ul className="absolute top-full left-0 mt-1 z-20 bg-slate-900/95 border border-white/10 rounded-xl max-h-56 overflow-y-auto w-full shadow-xl backdrop-blur-lg">
+      {suggestions.map((s, i) => (
         <li
           key={i}
-          onClick={() => onSelect(stop)}
-          className="flex items-center gap-2 px-4 py-2 cursor-pointer text-slate-200 hover:bg-gradient-to-r hover:from-cyan-600/30 hover:to-fuchsia-600/30 transition"
+          onClick={() => onSelect(s)}
+          className="flex items-center gap-2 px-4 py-2 cursor-pointer text-slate-200 hover:bg-white/10 transition"
         >
           <MapPin className="w-4 h-4 text-cyan-400" />
-          <span>{stop}</span>
+          <span>{s.stop_name}</span>
         </li>
       ))}
     </ul>
   );
 
   return (
-    <section className="relative w-full min-h-[75vh] flex flex-col md:flex-row items-center justify-center overflow-hidden from-slate-950 via-slate-900 to-black px-6 md:px-16">
-      {/* Left Section */}
-      <div className="flex flex-col items-center justify-center z-0 w-full md:w-1/2 text-white space-y-8">
+    <section className="relative w-full min-h-[75vh] flex flex-col md:flex-row items-center justify-center overflow-hidden px-6 md:px-16 bg-gradient-to-b from-slate-950 via-slate-900 to-black">
+      {/* LEFT */}
+      <div className="flex flex-col items-center justify-center w-full md:w-1/2 text-white space-y-8">
+        {/* Heading */}
         <div className="flex flex-col w-3/4 items-start gap-2">
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
             Book Your Journey
           </h1>
-          <p className="text-xl text-slate-400 mt-2 h-8">{message}</p>
+          <p id="typingMessage" className="text-xl text-slate-400 mt-2 h-8"></p>
         </div>
 
-        {/* Booking Form */}
+        {/* BOOKING FORM */}
         <form
           onSubmit={handleConfirm}
           className="w-full max-w-3xl bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 flex flex-wrap md:flex-nowrap items-end justify-between gap-4 shadow-lg"
         >
-          {/* FROM Input */}
+          {/* FROM */}
           <div className="flex flex-col w-full md:w-1/4 relative">
             <label className="text-slate-300 text-sm mb-1 ml-1">From</label>
             <input
@@ -181,16 +149,17 @@ export default function BookingSection() {
                   }, 300)
                 );
               }}
-              className="px-4 py-3 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 text-lg placeholder:text-slate-400 transition"
+              className="px-4 py-3 rounded-lg bg-white/10 text-white text-lg focus:ring-2 focus:ring-cyan-500"
             />
             {fromSuggestions.length > 0 &&
-              renderSuggestions(fromSuggestions, (val) => {
-                setFrom(val);
+              renderSuggestions(fromSuggestions, (stop) => {
+                setFrom(stop.stop_name);
+                setFromId(stop.stop_id);
                 setFromSuggestions([]);
               })}
           </div>
 
-          {/* TO Input */}
+          {/* TO */}
           <div className="flex flex-col w-full md:w-1/4 relative">
             <label className="text-slate-300 text-sm mb-1 ml-1">To</label>
             <input
@@ -207,27 +176,24 @@ export default function BookingSection() {
                   }, 300)
                 );
               }}
-              className="px-4 py-3 rounded-lg bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-fuchsia-500 text-lg placeholder:text-slate-400 transition"
+              className="px-4 py-3 rounded-lg bg-white/10 text-white text-lg focus:ring-2 focus:ring-fuchsia-500"
             />
             {toSuggestions.length > 0 &&
-              renderSuggestions(toSuggestions, (val) => {
-                setTo(val);
+              renderSuggestions(toSuggestions, (stop) => {
+                setTo(stop.stop_name);
+                setToId(stop.stop_id);
                 setToSuggestions([]);
               })}
           </div>
 
           {/* PASSENGERS */}
           <div className="flex flex-col w-full md:w-1/4">
-            <label className="text-slate-300 text-sm mb-1 ml-1">
-              Passengers
-            </label>
+            <label className="text-slate-300 text-sm mb-1 ml-1">Passengers</label>
             <div className="flex items-center justify-center gap-2 bg-white/10 px-3 py-2 rounded-lg">
               <Users className="h-4 w-4 text-slate-400" />
               <button
                 type="button"
-                onClick={() =>
-                  setSelectedTickets(Math.max(1, selectedTickets - 1))
-                }
+                onClick={() => setSelectedTickets(Math.max(1, selectedTickets - 1))}
                 className="rounded bg-white/10 px-3 py-1 text-sm hover:bg-white/20"
               >
                 −
@@ -243,66 +209,44 @@ export default function BookingSection() {
             </div>
           </div>
 
+          {/* SUBMIT */}
           <div className="w-full md:w-auto">
             <button
               type="submit"
-              className="w-full md:w-auto rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 px-8 py-3 text-lg font-semibold text-white hover:opacity-90 active:scale-95 transition"
+              className="w-full md:w-auto rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 px-8 py-3 text-lg font-semibold text-white hover:opacity-90"
             >
               Confirm
             </button>
           </div>
         </form>
 
-        {/* Booking Summary */}
-        {passengers.length > 0 && (
-          <div className="w-full max-w-3xl mt-6 bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 space-y-4">
-            <h2 className="text-2xl font-semibold text-cyan-300">
-              Booking Summary
-            </h2>
-
-            <ul className="space-y-2 text-slate-300 max-h-40 overflow-y-auto pr-2">
-              {passengers.map((p) => (
-                <li
-                  key={p.id}
-                  className="flex justify-between bg-white/10 rounded-lg p-3"
-                >
-                  <span>
-                    {p.from} ➜ {p.to} ({p.count} Passenger
-                    {p.count > 1 ? "s" : ""})
-                  </span>
-                  <span className="text-fuchsia-400 font-medium">
-                    ₹{p.price}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex justify-between items-center border-t border-white/10 pt-4">
-              <span className="text-lg font-medium text-white">Total Fare:</span>
-              <span className="text-2xl font-bold text-cyan-400">
-                ₹{totalPrice}
-              </span>
-            </div>
-
-            <div className="flex justify-end gap-4 mt-4">
-              <button
-                onClick={handleReset}
-                className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 transition"
+        {/* CONFIRMED JOURNEYS */}
+        {journeys.length > 0 && (
+          <div className="w-full max-w-3xl mt-6 space-y-4">
+            {journeys.map((j, idx) => (
+              <div
+                key={idx}
+                className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 space-y-2 text-slate-200"
               >
-                Reset
-              </button>
-              <button
-                onClick={() => alert("Proceeding to Payment...")}
-                className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-semibold hover:opacity-90 transition"
-              >
-                Proceed to Pay
-              </button>
-            </div>
+                <h2 className="text-2xl font-semibold text-cyan-300 flex gap-2 items-center">
+                  <Route className="w-6 h-6" /> Journey {idx + 1}
+                </h2>
+                <p>
+                  <span className="font-semibold text-white">From:</span> {j.from}
+                </p>
+                <p>
+                  <span className="font-semibold text-white">To:</span> {j.to}
+                </p>
+                <p>
+                  <span className="font-semibold text-white">Passengers:</span> {j.passengers}
+                </p>
+              </div>
+            ))}
           </div>
         )}
       </div>
 
-      {/* Right Section */}
+      {/* RIGHT */}
       <div className="flex items-center justify-center md:w-1/2">
         <Image
           src="/image.png"
