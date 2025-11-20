@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { connectBMTC } from "@/lib/bmtc";
 import { StopModel, EdgeModel } from "@/models/stops";
-import { buildGraph, dijkstra, Edge } from "@/lib/graph";
+import { buildGraph, dijkstraWithRoutes, Edge } from "@/lib/graph";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -27,12 +27,16 @@ export async function GET(req: Request) {
 
     // .lean() returns plain objects; assert them to Edge[] so buildGraph gets the expected shape
     const graph = buildGraph(edges as unknown as Edge[]);
-    const { path, distance } = dijkstra(graph, fromStop, toStop);
+   const { path, distance } = dijkstraWithRoutes(graph, fromStop, toStop);
 
-    // Convert path from stop_ids to stop_names
-    const pathNames = path.map(id => stopMap[id] || id);
+// Convert stop IDs to names and keep route info
+const pathWithRoutes = path.map(p => ({
+  stop_name: stopMap[p.stop_id] || p.stop_id,
+  route_id: p.route_id,
+}));
 
-    return NextResponse.json({ path: pathNames, distance });
+return NextResponse.json({ path: pathWithRoutes, distance });
+
   } catch (error) {
     console.error("Shortest Route Error:", error);
     return NextResponse.json({ error: "Failed to calculate route" }, { status: 500 });
