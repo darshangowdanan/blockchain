@@ -5,11 +5,8 @@ import { Users, MapPin } from "lucide-react";
 import { useState, useEffect, type FormEvent } from "react";
 
 type Stop = {
-  _id: string;
   stop_id: number;
   stop_name: string;
-  lat: number;
-  lng: number;
 };
 
 type Journey = {

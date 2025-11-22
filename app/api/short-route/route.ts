@@ -1,44 +1,75 @@
 import { NextResponse } from "next/server";
 import { connectBMTC } from "@/lib/bmtc";
-import { StopModel, EdgeModel } from "@/models/stops";
-import { buildGraph, dijkstraWithRoutes, Edge } from "@/lib/graph";
+import Stop from "@/models/stops";
+
+// Temporary Graph (You will replace with your real bus route graph)
+import graph from "@/data/graph.json";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const fromStop = Number(searchParams.get("from"));
-  const toStop = Number(searchParams.get("to"));
+  const from = Number(searchParams.get("from"));
+  const to = Number(searchParams.get("to"));
 
-  if (!fromStop || !toStop) {
-    return NextResponse.json({ error: "Missing from or to stop" }, { status: 400 });
+  if (!from || !to) {
+    return NextResponse.json({ error: "Invalid stops" }, { status: 400 });
   }
 
   try {
-    const conn = await connectBMTC();
-    const Stop = StopModel(conn);
-    const Edge = EdgeModel(conn);
+    await connectBMTC();
 
-    const edges = await Edge.find({}).lean();
-    const stops = await Stop.find({}, { stop_id: 1, stop_name: 1 }).lean();
+    const dist: any = {};
+    const prev: any = {};
+    const visited = new Set();
 
-    const stopMap = stops.reduce((acc: Record<number, string>, stop) => {
-      acc[stop.stop_id] = stop.stop_name;
-      return acc;
-    }, {});
+    Object.keys(graph).forEach((key) => {
+      dist[key] = Infinity;
+      prev[key] = null;
+    });
 
-    // .lean() returns plain objects; assert them to Edge[] so buildGraph gets the expected shape
-    const graph = buildGraph(edges as unknown as Edge[]);
-   const { path, distance } = dijkstraWithRoutes(graph, fromStop, toStop);
+    dist[from] = 0;
 
-// Convert stop IDs to names and keep route info
-const pathWithRoutes = path.map(p => ({
-  stop_name: stopMap[p.stop_id] || p.stop_id,
-  route_id: p.route_id,
-}));
+    while (visited.size < Object.keys(graph).length) {
+      let minNode = null;
 
-return NextResponse.json({ path: pathWithRoutes, distance });
+      for (const node in dist) {
+        if (!visited.has(node) && (minNode === null || dist[node] < dist[minNode]))
+          minNode = node;
+      }
 
-  } catch (error) {
-    console.error("Shortest Route Error:", error);
-    return NextResponse.json({ error: "Failed to calculate route" }, { status: 500 });
+      if (minNode === null) break;
+      visited.add(minNode);
+
+      const neighbors = (graph as Record<string, number[]>)[minNode] || [];
+      for (const neighbor of neighbors) {
+        const alt = dist[minNode] + 1;
+        if (alt < dist[neighbor]) {
+          dist[neighbor] = alt;
+          prev[neighbor] = minNode;
+        }
+      }
+    }
+
+    const path = [];
+    let cur = String(to);
+    while (cur) {
+      path.unshift(cur);
+      cur = prev[cur];
+    }
+
+    if (path[0] !== String(from)) {
+      return NextResponse.json({
+        path: [],
+        distance: null,
+      });
+    }
+
+    return NextResponse.json({
+      path,
+      distance: path.length - 1,
+    });
+
+  } catch (err) {
+    console.error("ROUTE ERROR:", err);
+    return NextResponse.json({ error: "Route calculation failed" }, { status: 500 });
   }
 }

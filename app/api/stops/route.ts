@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectBMTC } from "@/lib/bmtc";
-import { StopModel } from "@/models/stops";
+import Stop from "@/models/stops";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -9,20 +9,20 @@ export async function GET(req: Request) {
   if (!search) return NextResponse.json([]);
 
   try {
-    const conn = await connectBMTC();
-    const Stop = StopModel(conn);
+    await connectBMTC();
 
-    // Case-insensitive partial match for autocomplete
     const stops = await Stop.find(
-      { stop_name: { $regex: search, $options: "i" } },
-      { stop_name: 1, stop_id: 1, lat: 1, lng: 1 }
+      {
+        stop_name: { $regex: search, $options: "i" },
+      },
+      { stop_id: 1, stop_name: 1 }
     )
-      .limit(10)
+      .limit(20)
       .lean();
 
     return NextResponse.json(stops);
-  } catch (error) {
-    console.error("Stops API Error:", error);
-    return NextResponse.json({ error: "Failed to fetch stops" }, { status: 500 });
+  } catch (err) {
+    console.error("❌ STOP SEARCH ERROR:", err);
+    return NextResponse.json([], { status: 500 });
   }
 }
