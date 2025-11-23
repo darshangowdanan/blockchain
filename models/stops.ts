@@ -1,15 +1,12 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import { Schema } from "mongoose";
+import { connectBMTC } from "@/lib/bmtc";
 
-const stopSchema = new Schema(
-  {
-    stop_id: { type: Number, required: true },
-    stop_name: { type: String, required: true },
-    lat: Number,
-    lng: Number,
-  },
-  { collection: "stops" }
-);
+const StopSchema = new Schema({
+  stop_id: Number,
+  stop_name: String,
+});
 
-const Stop = models.Stop || model("Stop", stopSchema);
-
-export default Stop;
+export async function getStopModel() {
+  const conn = await connectBMTC();
+  return conn.models.Stop || conn.model("Stop", StopSchema, "stops");
+}

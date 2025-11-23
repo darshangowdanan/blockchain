@@ -170,7 +170,7 @@ export default function BookingSection() {
         {/* Booking Form */}
         <form
           onSubmit={handleConfirm}
-          className="w-full max-w-3xl bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 flex flex-wrap md:flex-nowrap items-end justify-between gap-4 shadow-lg relative z-20"
+          className="w-full max-w-3xl bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 flex flex-wrap md:flex-nowrap items-end justify-between gap-4 shadow-lg relative z-20m"
         >
           {/* From */}
           <div className="flex flex-col w-full md:w-1/4 relative">

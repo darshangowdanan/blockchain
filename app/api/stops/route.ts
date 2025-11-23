@@ -1,28 +1,21 @@
 import { NextResponse } from "next/server";
-import { connectBMTC } from "@/lib/bmtc";
-import Stop from "@/models/stops";
+import { getStopModel } from "@/models/stops";
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const search = searchParams.get("search") || "";
+  const search = new URL(req.url).searchParams.get("search") || "";
 
   if (!search) return NextResponse.json([]);
 
   try {
-    await connectBMTC();
+    const Stop = await getStopModel();
 
-    const stops = await Stop.find(
-      {
-        stop_name: { $regex: search, $options: "i" },
-      },
-      { stop_id: 1, stop_name: 1 }
-    )
-      .limit(20)
-      .lean();
+    const stops = await Stop.find({
+      stop_name: { $regex: search, $options: "i" },
+    }).limit(10);
 
     return NextResponse.json(stops);
   } catch (err) {
-    console.error("❌ STOP SEARCH ERROR:", err);
-    return NextResponse.json([], { status: 500 });
+    console.error("STOP SEARCH ERROR:", err);
+    return NextResponse.json({ error: "Failed to search stops" }, { status: 500 });
   }
 }
