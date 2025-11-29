@@ -28,7 +28,9 @@ export default function BookingSection() {
   const [journeys, setJourneys] = useState<Journey[]>([]);
   const [message, setMessage] = useState("");
 
-  const PRICE_PER_PASSENGER = 5;
+  // NEW
+  const [showQR, setShowQR] = useState(false);
+  const [qrData, setQrData] = useState("");
 
   const messages = [
     "Secure. Smart. Seamless Ticketing.",
@@ -84,54 +86,53 @@ export default function BookingSection() {
     }
   };
 
- const handleConfirm = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  if (!fromId || !toId) {
-    alert("Please select valid stops.");
-    return;
-  }
-    if (fromId === toId) {
-    alert("Please select different stops for departure and destination.");
-    return;
-  }
-
-  try {
-    // Call your shortest route API
-    const res = await fetch(`/api/short-route?from=${fromId}&to=${toId}`);
-    const data = await res.json();
-
-    if (!data.path || data.path.length === 0 || data.distance === null) {
-      alert("No bus route available between selected stops.");
+  const handleConfirm = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!fromId || !toId) {
+      alert("Please select valid stops.");
       return;
     }
 
-    // Calculate fare based on number of stops
-    const numStops = data.path.length - 1; // exclude starting stop
-    const farePerPassenger = 5; // Rs 5 per stop
-    const amount = numStops * farePerPassenger * selectedTickets;
+    if (fromId === toId) {
+      alert("Please select different stops for departure and destination.");
+      return;
+    }
 
-    setJourneys([
-      ...journeys,
-      {
-        from: from,
-        to: to,
-        passengers: selectedTickets,
-        amount,
-      },
-    ]);
+    try {
+      // Call shortest route API
+      const res = await fetch(`/api/short-route?from=${fromId}&to=${toId}`);
+      const data = await res.json();
 
-    // Reset inputs
-    setFrom("");
-    setTo("");
-    setFromId(null);
-    setToId(null);
-    setSelectedTickets(1);
-  } catch (err) {
-    console.error("Error calculating route:", err);
-    alert("Failed to calculate route. Try again.");
-  }
-};
+      if (!data.path || data.path.length === 0 || data.distance === null) {
+        alert("No bus route available between selected stops.");
+        return;
+      }
 
+      const numStops = data.path.length - 1;
+      const farePerPassenger = 5;
+      const amount = numStops * farePerPassenger * selectedTickets;
+
+      setJourneys([
+        ...journeys,
+        {
+          from,
+          to,
+          passengers: selectedTickets,
+          amount,
+        },
+      ]);
+
+      // Reset fields
+      setFrom("");
+      setTo("");
+      setFromId(null);
+      setToId(null);
+      setSelectedTickets(1);
+    } catch (err) {
+      console.error("Error calculating route:", err);
+      alert("Failed to calculate route. Try again.");
+    }
+  };
 
   const renderSuggestions = (suggestions: Stop[], onSelect: (s: Stop) => void) => (
     <ul className="absolute top-full left-0 mt-1 z-50 bg-slate-900/95 border border-white/10 rounded-xl max-h-56 overflow-y-auto w-full shadow-xl backdrop-blur-lg">
@@ -150,15 +151,56 @@ export default function BookingSection() {
 
   const totalAmount = journeys.reduce((sum, j) => sum + j.amount, 0);
 
+  // --------------------------------------------------
+  // NEW — QR + PAYMENT LOGIC
+  // --------------------------------------------------
+
   const handleProceedToPay = () => {
-    alert(`Proceeding to payment of ₹${totalAmount}...`);
-    // Integrate payment logic here
+    if (journeys.length === 0) return;
+
+    const summaryString = JSON.stringify({
+      journeys,
+      total: totalAmount,
+      timestamp: Date.now(),
+    });
+
+    setQrData(summaryString);
+    setShowQR(true);
+  };
+
+  const handleCancelPayment = () => {
+    setShowQR(false);
+  };
+
+  const handleCompletePayment = async () => {
+    try {
+      const res = await fetch("/api/complete-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ journeys, totalAmount }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Payment Successful! Ticket stored.");
+        setJourneys([]);
+        setShowQR(false);
+      } else {
+        alert("Payment failed.");
+      }
+    } catch (err) {
+      console.error("Payment Error:", err);
+      alert("Payment failed.");
+    }
   };
 
   return (
     <section className="relative w-full min-h-[75vh] flex flex-col md:flex-row items-center justify-center overflow-hidden px-6 md:px-16 bg-gradient-to-b from-slate-950 via-slate-900 to-black">
+      
       {/* LEFT */}
       <div className="flex flex-col items-center justify-center w-full md:w-1/2 text-white space-y-8 z-0">
+        
         {/* Heading */}
         <div className="flex flex-col w-3/4 items-start gap-2">
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
@@ -167,12 +209,12 @@ export default function BookingSection() {
           <p id="typingMessage" className="text-xl text-slate-400 mt-2 h-8">{message}</p>
         </div>
 
-        {/* Booking Form */}
+        {/* Form */}
         <form
           onSubmit={handleConfirm}
-          className="w-full max-w-3xl bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 flex flex-wrap md:flex-nowrap items-end justify-between gap-4 shadow-lg relative z-20m"
+          className="w-full max-w-3xl bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl p-6 flex flex-wrap md:flex-nowrap items-end justify-between gap-4 shadow-lg relative"
         >
-          {/* From */}
+          {/* FROM */}
           <div className="flex flex-col w-full md:w-1/4 relative">
             <label className="text-slate-300 text-sm mb-1 ml-1">From</label>
             <input
@@ -199,7 +241,7 @@ export default function BookingSection() {
               })}
           </div>
 
-          {/* To */}
+          {/* TO */}
           <div className="flex flex-col w-full md:w-1/4 relative">
             <label className="text-slate-300 text-sm mb-1 ml-1">To</label>
             <input
@@ -226,7 +268,7 @@ export default function BookingSection() {
               })}
           </div>
 
-          {/* Passengers */}
+          {/* PASSENGERS */}
           <div className="flex flex-col w-full md:w-1/6">
             <label className="text-slate-300 text-sm mb-1 ml-1">Passengers</label>
             <div className="flex items-center justify-center gap-2 bg-white/10 px-3 py-2 rounded-lg">
@@ -249,7 +291,7 @@ export default function BookingSection() {
             </div>
           </div>
 
-          {/* Submit */}
+          {/* CONFIRM */}
           <div className="w-full md:w-auto">
             <button
               type="submit"
@@ -260,9 +302,9 @@ export default function BookingSection() {
           </div>
         </form>
 
-        {/* Confirmed Journeys */}
+        {/* LIST OF JOURNEYS */}
         {journeys.length > 0 && (
-          <div className="w-full max-w-3xl mt-6 flex flex-col gap-4 relative z-10">
+          <div className="w-full max-w-3xl mt-6 flex flex-col gap-4">
             <div className="flex flex-col gap-2 max-h-[180px] overflow-y-auto">
               {journeys.map((j, idx) => (
                 <div
@@ -279,7 +321,7 @@ export default function BookingSection() {
               ))}
             </div>
 
-            {/* Total & Proceed */}
+            {/* TOTAL + PAY */}
             <div className="flex justify-between items-center mt-4">
               <div className="text-white font-semibold text-lg">
                 Total Amount: ₹{totalAmount}
@@ -295,8 +337,8 @@ export default function BookingSection() {
         )}
       </div>
 
-      {/* RIGHT */}
-      <div className="flex items-center justify-center md:w-1/2 z-0">
+      {/* RIGHT SIDE IMAGE */}
+      <div className="flex items-center justify-center md:w-1/2">
         <Image
           src="/image.png"
           alt="Bus"
@@ -306,6 +348,49 @@ export default function BookingSection() {
           priority
         />
       </div>
+
+      {/* --------------------------------------------------
+           QR PAYMENT POPUP (ADDED)
+         -------------------------------------------------- */}
+      {showQR && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-[9999]">
+          <div className="bg-slate-900 border border-white/10 p-6 rounded-2xl shadow-xl w-[320px] text-white flex flex-col items-center">
+            
+            <h2 className="text-xl font-semibold mb-3">Scan to Pay</h2>
+
+            {/* QR IMAGE */}
+            <img
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(
+                qrData
+              )}`}
+              alt="QR Code"
+              className="rounded-lg shadow-md"
+            />
+
+            {/* AMOUNT */}
+            <p className="mt-3 text-lg font-semibold">
+              Total: ₹{totalAmount}
+            </p>
+
+            <div className="flex gap-4 mt-5">
+              <button
+                onClick={handleCancelPayment}
+                className="px-4 py-2 rounded-lg bg-red-500 text-white"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleCompletePayment}
+                className="px-4 py-2 rounded-lg bg-green-500 text-white"
+              >
+                Pay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </section>
   );
 }
