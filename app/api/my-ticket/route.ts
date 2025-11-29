@@ -5,17 +5,25 @@ import Ticket from "@/models/ticket";
 import { connectDB } from "@/lib/mongodb";
 
 export async function GET() {
-  const session = await getServerSession(authConfig);
+  try {
+    const session = await getServerSession(authConfig);
 
-  // User not logged in → return empty array (prevents frontend crashing)
-  if (!session || !session.user) {
-    return NextResponse.json([]);
+    // user not logged in
+    if (!session || !session.user?.email) {
+      return NextResponse.json([]);
+    }
+
+    await connectDB();
+
+    const tickets = await Ticket.find({
+      userEmail: session.user.email,
+    }).sort({ createdAt: -1 }); // newest first (optional)
+
+    return NextResponse.json(tickets);
+  } catch (error) {
+    console.error("Error fetching tickets:", error);
+    return NextResponse.json([], { status: 500 });
   }
-
-  await connectDB();
-
-  const tickets = await Ticket.find({ userEmail: session.user.email });
-
-  return NextResponse.json(tickets);
 }
+
 
