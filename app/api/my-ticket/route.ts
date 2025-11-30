@@ -1,29 +1,25 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authConfig } from "@/auth.config";
-import Ticket from "@/models/ticket";
 import { connectDB } from "@/lib/mongodb";
+import { TicketGroup } from "@/models/TicketGroup";
+import { JourneyTicket } from "@/models/JourneyTicket";
 
 export async function GET() {
   try {
     const session = await getServerSession(authConfig);
-
-    // user not logged in
-    if (!session || !session.user?.email) {
-      return NextResponse.json([]);
+    if (!session || !session.user) {
+      return NextResponse.json({ success: false, message: "Not logged in" });
     }
 
     await connectDB();
 
-    const tickets = await Ticket.find({
-      userEmail: session.user.email,
-    }).sort({ createdAt: -1 }); // newest first (optional)
+    // Fetch all groups of this user
+    const groups = await TicketGroup.find({ userEmail: session.user.email }).populate("tickets");
 
-    return NextResponse.json(tickets);
+    return NextResponse.json(groups);
   } catch (error) {
     console.error("Error fetching tickets:", error);
-    return NextResponse.json([], { status: 500 });
+    return NextResponse.json({ success: false, message: "Failed to fetch tickets" });
   }
 }
-
-
