@@ -25,34 +25,37 @@ export async function POST(req: Request) {
       userId: session.user.email,
       userEmail: session.user.email,
       paymentId,
-      tickets: [], // will fill after creating JourneyTickets
+      tickets: [],
     });
 
-    // 2️⃣ Create JourneyTickets
+    // 2️⃣ Create JourneyTickets (NOW ALSO SAVING PATH)
     interface Journey {
       from: string;
       to: string;
       passengers: number;
+      path?: string[];   // <-- added
     }
 
     const journeyTickets: mongoose.Types.ObjectId[] = await Promise.all(
       journeys.map(async (j: Journey) => {
-      const ticket = await JourneyTicket.create({
-        from: j.from,
-        to: j.to,
-        passengers: j.passengers,
-        groupId: ticketGroup._id,
-        qrCode: `GROUP:${ticketGroup._id}_TICKET:${new mongoose.Types.ObjectId()}`,
-      });
-      return ticket._id;
+        const ticket = await JourneyTicket.create({
+          from: j.from,
+          to: j.to,
+          passengers: j.passengers,
+          path: j.path || [],   // <-- SAVE PATH HERE
+          groupId: ticketGroup._id,
+          qrCode: `GROUP:${ticketGroup._id}_TICKET:${new mongoose.Types.ObjectId()}`,
+        });
+        return ticket._id;
       })
     );
 
-    // 3️⃣ Update TicketGroup with all ticket IDs
+    // 3️⃣ Update TicketGroup with ticket IDs
     ticketGroup.tickets = journeyTickets;
     await ticketGroup.save();
 
     return NextResponse.json({ success: true, groupId: ticketGroup._id });
+
   } catch (error) {
     console.error("Payment error:", error);
     return NextResponse.json({ success: false, message: "Payment failed" });

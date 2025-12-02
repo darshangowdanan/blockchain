@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { QrCode, X, Copy } from "lucide-react";
 
 type TicketItem = {
@@ -19,18 +20,21 @@ type TicketGroup = {
 };
 
 export function DashboardSection() {
+  const { data: session, status } = useSession(); // ⭐ NEW
   const [bookings, setBookings] = useState<TicketGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<TicketItem | null>(null);
 
   useEffect(() => {
+    // ⛔ Do NOT call API if still loading or unauthenticated
+    if (status !== "authenticated") return;
+
     async function fetchTickets() {
       try {
         const res = await fetch("/api/my-ticket");
         const data = await res.json();
 
         if (Array.isArray(data)) {
-          // 🔥 JUST REVERSE GROUPS + REVERSE TICKETS
           const reversed = data
             .map((group: TicketGroup) => ({
               ...group,
@@ -51,7 +55,7 @@ export function DashboardSection() {
     }
 
     fetchTickets();
-  }, []);
+  }, [status]); // ⭐ Runs when session changes
 
   const handleShareTicket = (ticketId: string) => {
     const url = `${window.location.origin}/ticket/${ticketId}`;
@@ -70,17 +74,27 @@ export function DashboardSection() {
         <p className="text-lg text-slate-400">Manage your holographic tickets</p>
       </div>
 
-      {loading && (
+      {/* 🔥 Loading state */}
+      {(status === "loading" || loading) && (
         <p className="text-center text-white/70 text-lg">Loading your tickets…</p>
       )}
 
-      {!loading && bookings.length === 0 && (
+      {/* 🔥 Not logged in — don't fetch API */}
+      {status === "unauthenticated" && (
+        <p className="text-center text-white/70 text-lg">
+          Please login to view your bookings.
+        </p>
+      )}
+
+      {/* 🔥 Logged in + No tickets */}
+      {status === "authenticated" && !loading && bookings.length === 0 && (
         <p className="text-center text-white/70 text-lg">
           No bookings yet. Start your journey! 🚍
         </p>
       )}
 
-      {!loading && bookings.length > 0 && (
+      {/* 🔥 Logged in + Tickets exist */}
+      {status === "authenticated" && bookings.length > 0 && (
         <div className="space-y-6">
           {bookings.map((group) => (
             <div
@@ -99,6 +113,7 @@ export function DashboardSection() {
                   <div className="text-white">
                     {ticket.from} → {ticket.to} | {ticket.passengers} passenger(s)
                   </div>
+
                   <div className="flex gap-2">
                     <button
                       onClick={() => setSelected(ticket)}
@@ -107,6 +122,7 @@ export function DashboardSection() {
                       <QrCode className="h-4 w-4" />
                       View QR
                     </button>
+
                     <button
                       onClick={() => handleShareTicket(ticket._id)}
                       className="inline-flex items-center gap-1 rounded-full border border-white/20 px-3 py-1 text-sm hover:bg-white/10"
@@ -122,6 +138,7 @@ export function DashboardSection() {
         </div>
       )}
 
+      {/* QR Modal */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur">
           <div className="w-full max-w-md rounded-2xl bg-white/10 p-6 backdrop-blur-lg border border-white/20">

@@ -5,6 +5,7 @@ export interface JourneyTicketDocument extends Document {
   from: string;
   to: string;
   passengers: number;
+  path: string[];   // ✅ Added path
   groupId: mongoose.Types.ObjectId;
   qrCode: string;
   createdAt: Date;
@@ -16,6 +17,10 @@ const journeyTicketSchema = new Schema<JourneyTicketDocument>(
     from: { type: String, required: true },
     to: { type: String, required: true },
     passengers: { type: Number, required: true },
+
+    // ✅ NEW FIELD
+    path: { type: [String], default: [] },
+
     groupId: { type: Schema.Types.ObjectId, ref: "TicketGroup" },
     qrCode: { type: String, required: true },
   },
@@ -23,4 +28,5 @@ const journeyTicketSchema = new Schema<JourneyTicketDocument>(
 );
 
 export const JourneyTicket: Model<JourneyTicketDocument> =
-  mongoose.models.JourneyTicket || model<JourneyTicketDocument>("JourneyTicket", journeyTicketSchema);
+  mongoose.models.JourneyTicket ||
+  model<JourneyTicketDocument>("JourneyTicket", journeyTicketSchema);
