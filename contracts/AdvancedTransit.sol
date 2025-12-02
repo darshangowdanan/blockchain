@@ -5,56 +5,58 @@ contract AdvancedTransit {
     
     struct Ticket {
         uint256 ticketId;
-        address owner;
-        
-        // Time Logic
-        uint256 activationTime; // Set when first scanned
-        bool isActive;          // True after first scan
-        
-        // Path Logic
-        string[] allowedPath;   // e.g., ["Majestic", "Corporation", "Shivajinagar"]
-        string[] scannedStops;  // e.g., ["Majestic"] - Prevents reuse at same stop
+        string userId;          // Stores "user@gmail.com"
+        uint256 activationTime; 
+        bool isActive;          
+        string[] allowedPath;   
+        string[] scannedStops;  
     }
 
     uint256 public nextTicketId;
-    mapping(uint256 => Ticket) public tickets;
-    mapping(address => uint256[]) public userTickets; 
+    address public admin; // The server's wallet address
 
-    event TicketTransfer(uint256 ticketId, address from, address to);
+    mapping(uint256 => Ticket) public tickets;
+
+    event TicketIssued(uint256 ticketId, string userId);
     event TicketScanned(uint256 ticketId, string stopName, uint256 timestamp);
 
-    // 1. Buy Ticket (With Path)
-    function buyTicket(string[] memory _path) public payable {
+    constructor() {
+        admin = msg.sender; // The deployer (YOU) is the admin
+    }
+
+    modifier onlyAdmin() {
+        require(msg.sender == admin, "Only Admin Server can perform this");
+        _;
+    }
+
+    // 1. Issue Ticket (Called by YOUR SERVER)
+    function issueTicket(string memory _userId, string[] memory _path) public onlyAdmin {
         tickets[nextTicketId] = Ticket({
             ticketId: nextTicketId,
-            owner: msg.sender,
+            userId: _userId,
             activationTime: 0,
             isActive: false,
             allowedPath: _path,
             scannedStops: new string[](0) 
         });
         
-        userTickets[msg.sender].push(nextTicketId);
+        emit TicketIssued(nextTicketId, _userId);
         nextTicketId++;
     }
 
-    // 2. Conductor Scans Ticket
+    // 2. Scan Ticket (Called by Conductor)
     function scanTicket(uint256 _ticketId, string memory _currentStop) public {
         Ticket storage t = tickets[_ticketId];
 
         // Basic Checks
-        require(msg.sender != t.owner, "Cannot scan own ticket"); 
-        
-        // Time Check (4 Hours from First Scan)
         if (t.isActive) {
-            require(block.timestamp < t.activationTime + 4 hours, "Ticket Expired (Time Limit)");
+            require(block.timestamp < t.activationTime + 4 hours, "Ticket Expired");
         } else {
-            // First time scanning! Start the timer.
             t.isActive = true;
             t.activationTime = block.timestamp;
         }
 
-        // Path Check: Is this stop in the allowed path?
+        // Path Check
         bool isAllowed = false;
         for (uint i = 0; i < t.allowedPath.length; i++) {
             if (keccak256(bytes(t.allowedPath[i])) == keccak256(bytes(_currentStop))) {
@@ -62,46 +64,21 @@ contract AdvancedTransit {
                 break;
             }
         }
-        require(isAllowed, "Invalid Stop: Ticket not valid for this location");
+        require(isAllowed, "Invalid Stop");
 
-        // Reuse Check: Have we already scanned at this stop?
+        // Reuse Check
         for (uint i = 0; i < t.scannedStops.length; i++) {
             require(
                 keccak256(bytes(t.scannedStops[i])) != keccak256(bytes(_currentStop)), 
-                "Ticket already used at this stop"
+                "Already used here"
             );
         }
 
-        // Success: Record the scan
         t.scannedStops.push(_currentStop);
         emit TicketScanned(_ticketId, _currentStop, block.timestamp);
     }
-
-    // 3. Validation View (Frontend Helper)
-    function getMyValidTickets(address _user) public view returns (Ticket[] memory) {
-        uint256[] memory ids = userTickets[_user];
-        uint256 count = 0;
-
-        // First pass: Count valid tickets
-        for (uint256 i = 0; i < ids.length; i++) {
-            Ticket memory t = tickets[ids[i]];
-            bool expired = t.isActive && (block.timestamp > t.activationTime + 4 hours);
-            if (t.owner == _user && !expired) {
-                count++;
-            }
-        }
-
-        // Second pass: Fill array
-        Ticket[] memory active = new Ticket[](count);
-        uint256 index = 0;
-        for (uint256 i = 0; i < ids.length; i++) {
-            Ticket memory t = tickets[ids[i]];
-            bool expired = t.isActive && (block.timestamp > t.activationTime + 4 hours);
-            if (t.owner == _user && !expired) {
-                active[index] = t;
-                index++;
-            }
-        }
-        return active;
+    
+    function getTicketDetails(uint256 _ticketId) public view returns (Ticket memory) {
+        return tickets[_ticketId];
     }
 }

@@ -4,13 +4,17 @@ import Image from "next/image";
 import { Users, MapPin } from "lucide-react";
 import { useState, useEffect, type FormEvent } from "react";
 
+// ✅ No imports from utils/blockchain anymore! 
+// The server handles the blockchain now.
+
 type Stop = { stop_id: number; stop_name: string };
 type Journey = {
   from: string;
   to: string;
   passengers: number;
   amount: number;
-  path: string[]; // <-- ADDED
+  path: string[];
+  // blockchainTxHash removed from here - generated on server
 };
 
 export default function BookingSection() {
@@ -24,6 +28,7 @@ export default function BookingSection() {
   const [toSuggestions, setToSuggestions] = useState<Stop[]>([]);
   const [journeys, setJourneys] = useState<Journey[]>([]);
   const [message, setMessage] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false); // New loading state
 
   // QR logic
   const [showQR, setShowQR] = useState(false);
@@ -105,7 +110,6 @@ export default function BookingSection() {
       const farePerPassenger = 5;
       const amount = numStops * farePerPassenger * selectedTickets;
 
-      // 🔥 ADDING THE PATH HERE (ONLY CHANGE)
       setJourneys([
         ...journeys,
         {
@@ -113,7 +117,7 @@ export default function BookingSection() {
           to,
           passengers: selectedTickets,
           amount,
-          path: data.path, // <-- IMPORTANT ADDITION
+          path: data.path,
         },
       ]);
 
@@ -163,24 +167,37 @@ export default function BookingSection() {
 
   const handleCancelPayment = () => setShowQR(false);
 
+  // 🔥 UPDATED PAYMENT FUNCTION (GASLESS)
   const handleCompletePayment = async () => {
     try {
+      setIsProcessing(true); // Start loading UI
       const paymentId = `PAY_${Date.now()}`;
-      const res = await fetch("/api/complete-payment", {
+      
+      // ✅ 1. Call Backend Directly
+      // No MetaMask call here! The server will mint the ticket.
+      const res = await fetch("/api/complete-payment", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ journeys, paymentId }),
+        body: JSON.stringify({ 
+          journeys, 
+          paymentId 
+        }),
       });
+      
       const data = await res.json();
 
       if (data.success) {
-        alert("Payment Successful! Tickets stored.");
+        alert("✅ Payment Successful! Ticket secured on Blockchain.");
         setJourneys([]);
         setShowQR(false);
-      } else alert("Payment failed.");
-    } catch (err) {
+      } else {
+        alert("Payment failed: " + (data.message || "Server Error"));
+      }
+    } catch (err: any) {
       console.error(err);
-      alert("Payment failed.");
+      alert("Payment failed: " + (err.message || "Unknown error"));
+    } finally {
+      setIsProcessing(false); // Stop loading UI
     }
   };
 
@@ -341,7 +358,9 @@ export default function BookingSection() {
       {showQR && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-[9999]">
           <div className="bg-slate-900 border border-white/10 p-6 rounded-2xl shadow-xl w-[320px] text-white flex flex-col items-center">
-            <h2 className="text-xl font-semibold mb-3">Scan to Pay</h2>
+            <h2 className="text-xl font-semibold mb-3">Pay Now</h2>
+            
+            {/* Standard Payment QR (e.g. UPI) */}
             <img
               src={`https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(
                 qrData
@@ -349,19 +368,26 @@ export default function BookingSection() {
               alt="QR Code"
               className="rounded-lg shadow-md"
             />
+            
             <p className="mt-3 text-lg font-semibold">Total: ₹{totalAmount}</p>
+            <p className="text-xs text-slate-400 mt-1">
+              (Blockchain Ticket will be auto-generated)
+            </p>
+            
             <div className="flex gap-4 mt-5">
               <button
                 onClick={handleCancelPayment}
-                className="px-4 py-2 rounded-lg bg-red-500 text-white"
+                disabled={isProcessing}
+                className="px-4 py-2 rounded-lg bg-red-500 text-white disabled:opacity-50"
               >
                 Cancel
               </button>
               <button
                 onClick={handleCompletePayment}
-                className="px-4 py-2 rounded-lg bg-green-500 text-white"
+                disabled={isProcessing}
+                className="px-4 py-2 rounded-lg bg-green-500 text-white font-bold disabled:opacity-50"
               >
-                Pay
+                {isProcessing ? "Processing..." : "Pay & Book"}
               </button>
             </div>
           </div>

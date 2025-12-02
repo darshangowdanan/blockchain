@@ -9,7 +9,6 @@ import type {
   Result,
   Interface,
   EventFragment,
-  AddressLike,
   ContractRunner,
   ContractMethod,
   Listener,
@@ -26,7 +25,7 @@ import type {
 export declare namespace AdvancedTransit {
   export type TicketStruct = {
     ticketId: BigNumberish;
-    owner: AddressLike;
+    userId: string;
     activationTime: BigNumberish;
     isActive: boolean;
     allowedPath: string[];
@@ -35,14 +34,14 @@ export declare namespace AdvancedTransit {
 
   export type TicketStructOutput = [
     ticketId: bigint,
-    owner: string,
+    userId: string,
     activationTime: bigint,
     isActive: boolean,
     allowedPath: string[],
     scannedStops: string[]
   ] & {
     ticketId: bigint;
-    owner: string;
+    userId: string;
     activationTime: bigint;
     isActive: boolean;
     allowedPath: string[];
@@ -53,22 +52,26 @@ export declare namespace AdvancedTransit {
 export interface AdvancedTransitInterface extends Interface {
   getFunction(
     nameOrSignature:
-      | "buyTicket"
-      | "getMyValidTickets"
+      | "admin"
+      | "getTicketDetails"
+      | "issueTicket"
       | "nextTicketId"
       | "scanTicket"
       | "tickets"
-      | "userTickets"
   ): FunctionFragment;
 
   getEvent(
-    nameOrSignatureOrTopic: "TicketScanned" | "TicketTransfer"
+    nameOrSignatureOrTopic: "TicketIssued" | "TicketScanned"
   ): EventFragment;
 
-  encodeFunctionData(functionFragment: "buyTicket", values: [string[]]): string;
+  encodeFunctionData(functionFragment: "admin", values?: undefined): string;
   encodeFunctionData(
-    functionFragment: "getMyValidTickets",
-    values: [AddressLike]
+    functionFragment: "getTicketDetails",
+    values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "issueTicket",
+    values: [string, string[]]
   ): string;
   encodeFunctionData(
     functionFragment: "nextTicketId",
@@ -82,14 +85,14 @@ export interface AdvancedTransitInterface extends Interface {
     functionFragment: "tickets",
     values: [BigNumberish]
   ): string;
-  encodeFunctionData(
-    functionFragment: "userTickets",
-    values: [AddressLike, BigNumberish]
-  ): string;
 
-  decodeFunctionResult(functionFragment: "buyTicket", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "admin", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "getMyValidTickets",
+    functionFragment: "getTicketDetails",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "issueTicket",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -98,10 +101,19 @@ export interface AdvancedTransitInterface extends Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "scanTicket", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "tickets", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "userTickets",
-    data: BytesLike
-  ): Result;
+}
+
+export namespace TicketIssuedEvent {
+  export type InputTuple = [ticketId: BigNumberish, userId: string];
+  export type OutputTuple = [ticketId: bigint, userId: string];
+  export interface OutputObject {
+    ticketId: bigint;
+    userId: string;
+  }
+  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
+  export type Filter = TypedDeferredTopicFilter<Event>;
+  export type Log = TypedEventLog<Event>;
+  export type LogDescription = TypedLogDescription<Event>;
 }
 
 export namespace TicketScannedEvent {
@@ -119,24 +131,6 @@ export namespace TicketScannedEvent {
     ticketId: bigint;
     stopName: string;
     timestamp: bigint;
-  }
-  export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
-  export type Filter = TypedDeferredTopicFilter<Event>;
-  export type Log = TypedEventLog<Event>;
-  export type LogDescription = TypedLogDescription<Event>;
-}
-
-export namespace TicketTransferEvent {
-  export type InputTuple = [
-    ticketId: BigNumberish,
-    from: AddressLike,
-    to: AddressLike
-  ];
-  export type OutputTuple = [ticketId: bigint, from: string, to: string];
-  export interface OutputObject {
-    ticketId: bigint;
-    from: string;
-    to: string;
   }
   export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>;
   export type Filter = TypedDeferredTopicFilter<Event>;
@@ -187,12 +181,18 @@ export interface AdvancedTransit extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
-  buyTicket: TypedContractMethod<[_path: string[]], [void], "payable">;
+  admin: TypedContractMethod<[], [string], "view">;
 
-  getMyValidTickets: TypedContractMethod<
-    [_user: AddressLike],
-    [AdvancedTransit.TicketStructOutput[]],
+  getTicketDetails: TypedContractMethod<
+    [_ticketId: BigNumberish],
+    [AdvancedTransit.TicketStructOutput],
     "view"
+  >;
+
+  issueTicket: TypedContractMethod<
+    [_userId: string, _path: string[]],
+    [void],
+    "nonpayable"
   >;
 
   nextTicketId: TypedContractMethod<[], [bigint], "view">;
@@ -208,17 +208,11 @@ export interface AdvancedTransit extends BaseContract {
     [
       [bigint, string, bigint, boolean] & {
         ticketId: bigint;
-        owner: string;
+        userId: string;
         activationTime: bigint;
         isActive: boolean;
       }
     ],
-    "view"
-  >;
-
-  userTickets: TypedContractMethod<
-    [arg0: AddressLike, arg1: BigNumberish],
-    [bigint],
     "view"
   >;
 
@@ -227,14 +221,21 @@ export interface AdvancedTransit extends BaseContract {
   ): T;
 
   getFunction(
-    nameOrSignature: "buyTicket"
-  ): TypedContractMethod<[_path: string[]], [void], "payable">;
+    nameOrSignature: "admin"
+  ): TypedContractMethod<[], [string], "view">;
   getFunction(
-    nameOrSignature: "getMyValidTickets"
+    nameOrSignature: "getTicketDetails"
   ): TypedContractMethod<
-    [_user: AddressLike],
-    [AdvancedTransit.TicketStructOutput[]],
+    [_ticketId: BigNumberish],
+    [AdvancedTransit.TicketStructOutput],
     "view"
+  >;
+  getFunction(
+    nameOrSignature: "issueTicket"
+  ): TypedContractMethod<
+    [_userId: string, _path: string[]],
+    [void],
+    "nonpayable"
   >;
   getFunction(
     nameOrSignature: "nextTicketId"
@@ -253,21 +254,21 @@ export interface AdvancedTransit extends BaseContract {
     [
       [bigint, string, bigint, boolean] & {
         ticketId: bigint;
-        owner: string;
+        userId: string;
         activationTime: bigint;
         isActive: boolean;
       }
     ],
     "view"
   >;
-  getFunction(
-    nameOrSignature: "userTickets"
-  ): TypedContractMethod<
-    [arg0: AddressLike, arg1: BigNumberish],
-    [bigint],
-    "view"
-  >;
 
+  getEvent(
+    key: "TicketIssued"
+  ): TypedContractEvent<
+    TicketIssuedEvent.InputTuple,
+    TicketIssuedEvent.OutputTuple,
+    TicketIssuedEvent.OutputObject
+  >;
   getEvent(
     key: "TicketScanned"
   ): TypedContractEvent<
@@ -275,15 +276,19 @@ export interface AdvancedTransit extends BaseContract {
     TicketScannedEvent.OutputTuple,
     TicketScannedEvent.OutputObject
   >;
-  getEvent(
-    key: "TicketTransfer"
-  ): TypedContractEvent<
-    TicketTransferEvent.InputTuple,
-    TicketTransferEvent.OutputTuple,
-    TicketTransferEvent.OutputObject
-  >;
 
   filters: {
+    "TicketIssued(uint256,string)": TypedContractEvent<
+      TicketIssuedEvent.InputTuple,
+      TicketIssuedEvent.OutputTuple,
+      TicketIssuedEvent.OutputObject
+    >;
+    TicketIssued: TypedContractEvent<
+      TicketIssuedEvent.InputTuple,
+      TicketIssuedEvent.OutputTuple,
+      TicketIssuedEvent.OutputObject
+    >;
+
     "TicketScanned(uint256,string,uint256)": TypedContractEvent<
       TicketScannedEvent.InputTuple,
       TicketScannedEvent.OutputTuple,
@@ -293,17 +298,6 @@ export interface AdvancedTransit extends BaseContract {
       TicketScannedEvent.InputTuple,
       TicketScannedEvent.OutputTuple,
       TicketScannedEvent.OutputObject
-    >;
-
-    "TicketTransfer(uint256,address,address)": TypedContractEvent<
-      TicketTransferEvent.InputTuple,
-      TicketTransferEvent.OutputTuple,
-      TicketTransferEvent.OutputObject
-    >;
-    TicketTransfer: TypedContractEvent<
-      TicketTransferEvent.InputTuple,
-      TicketTransferEvent.OutputTuple,
-      TicketTransferEvent.OutputObject
     >;
   };
 }

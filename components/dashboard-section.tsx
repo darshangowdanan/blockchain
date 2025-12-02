@@ -2,15 +2,18 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { QrCode, X, Copy } from "lucide-react";
+import { QrCode, X, Copy, ShieldCheck, ExternalLink, Loader2 } from "lucide-react";
 
 type TicketItem = {
   _id: string;
   from: string;
   to: string;
   passengers: number;
-  date: string;
-  fare: number;
+  createdAt: string; 
+  qrCode: string;    
+  blockchainTicketId?: string; 
+  blockchainTxHash?: string;   
+  path?: string[];
 };
 
 type TicketGroup = {
@@ -20,47 +23,49 @@ type TicketGroup = {
 };
 
 export function DashboardSection() {
-  const { data: session, status } = useSession(); // ⭐ NEW
+  const { data: session, status } = useSession(); 
   const [bookings, setBookings] = useState<TicketGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<TicketItem | null>(null);
 
   useEffect(() => {
-    // ⛔ Do NOT call API if still loading or unauthenticated
-    if (status !== "authenticated") return;
+    if (status !== "authenticated") {
+        if (status === "unauthenticated") setLoading(false);
+        return;
+    }
 
     async function fetchTickets() {
       try {
-        const res = await fetch("/api/my-ticket");
+        const res = await fetch("/api/my-ticket"); 
         const data = await res.json();
 
+        // ✅ FIX: Handle the Direct Array response you are getting
         if (Array.isArray(data)) {
-          const reversed = data
-            .map((group: TicketGroup) => ({
-              ...group,
-              tickets: [...group.tickets].reverse(),
-            }))
-            .reverse();
-
-          setBookings(reversed);
-        } else {
-          setBookings([]);
+            setBookings(data);
+        } 
+        // Handle { success: true, tickets: [...] } format just in case
+        else if (data.success && Array.isArray(data.tickets)) {
+             setBookings([{ _id: "recent", paymentId: "Recent", tickets: data.tickets }]);
         }
       } catch (error) {
         console.error("Error fetching tickets:", error);
-        setBookings([]);
+      } finally {
+        setLoading(false);
       }
-
-      setLoading(false);
     }
 
     fetchTickets();
-  }, [status]); // ⭐ Runs when session changes
+  }, [status]);
 
   const handleShareTicket = (ticketId: string) => {
     const url = `${window.location.origin}/ticket/${ticketId}`;
     navigator.clipboard.writeText(url);
     alert("Ticket link copied to clipboard!");
+  };
+
+  const openPolygonScan = (txHash?: string) => {
+    if(!txHash) return;
+    window.open(`https://amoy.polygonscan.com/tx/${txHash}`, "_blank");
   };
 
   return (
@@ -71,29 +76,23 @@ export function DashboardSection() {
             My Bookings
           </span>
         </h2>
-        <p className="text-lg text-slate-400">Manage your holographic tickets</p>
       </div>
 
-      {/* 🔥 Loading state */}
+      {/* Loading */}
       {(status === "loading" || loading) && (
-        <p className="text-center text-white/70 text-lg">Loading your tickets…</p>
+        <div className="flex justify-center items-center gap-2 text-white/70 text-lg">
+            <Loader2 className="animate-spin" /> Loading tickets...
+        </div>
       )}
 
-      {/* 🔥 Not logged in — don't fetch API */}
-      {status === "unauthenticated" && (
-        <p className="text-center text-white/70 text-lg">
-          Please login to view your bookings.
-        </p>
-      )}
-
-      {/* 🔥 Logged in + No tickets */}
+      {/* No Bookings */}
       {status === "authenticated" && !loading && bookings.length === 0 && (
-        <p className="text-center text-white/70 text-lg">
-          No bookings yet. Start your journey! 🚍
-        </p>
+        <div className="text-center">
+            <p className="text-white/70 text-lg mb-4">No bookings found.</p>
+        </div>
       )}
 
-      {/* 🔥 Logged in + Tickets exist */}
+      {/* Tickets List */}
       {status === "authenticated" && bookings.length > 0 && (
         <div className="space-y-6">
           {bookings.map((group) => (
@@ -101,34 +100,43 @@ export function DashboardSection() {
               key={group._id}
               className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-6 backdrop-blur md:flex md:flex-col"
             >
-              <h3 className="text-white font-semibold mb-4">
-                Payment ID: {group.paymentId}
+              <h3 className="text-white font-semibold mb-4 opacity-50 text-sm uppercase tracking-wider border-b border-white/10 pb-2">
+                Order: {group.paymentId}
               </h3>
 
               {group.tickets.map((ticket) => (
                 <div
                   key={ticket._id}
-                  className="flex justify-between items-center mb-2 rounded-lg bg-white/5 p-3"
+                  className="flex flex-col md:flex-row justify-between items-center mb-3 rounded-xl bg-white/5 border border-white/5 p-4 hover:border-white/20 transition"
                 >
-                  <div className="text-white">
-                    {ticket.from} → {ticket.to} | {ticket.passengers} passenger(s)
+                  <div className="text-white mb-3 md:mb-0 w-full md:w-auto">
+                    <div className="text-lg font-semibold flex items-center gap-2">
+                        {ticket.from} <span className="text-slate-500">→</span> {ticket.to}
+                    </div>
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-400 mt-2">
+                        <span className="bg-white/10 px-2 py-0.5 rounded">{ticket.passengers} Passenger(s)</span>
+                        
+                        {/* Status Badge */}
+                        {ticket.blockchainTicketId ? (
+                            <span className="flex items-center gap-1 text-cyan-400 bg-cyan-900/20 px-2 py-0.5 rounded border border-cyan-500/30">
+                                <ShieldCheck size={12} />
+                                #{ticket.blockchainTicketId}
+                            </span>
+                        ) : (
+                            <span className="text-yellow-500 text-xs border border-yellow-500/30 px-2 py-0.5 rounded">
+                                Syncing / Old Ticket
+                            </span>
+                        )}
+                    </div>
                   </div>
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full md:w-auto mt-2 md:mt-0">
                     <button
                       onClick={() => setSelected(ticket)}
-                      className="inline-flex items-center gap-1 rounded-full border border-white/20 px-3 py-1 text-sm hover:bg-white/10"
+                      className="flex-1 md:flex-none justify-center inline-flex items-center gap-2 rounded-lg bg-cyan-500/10 border border-cyan-500/50 px-4 py-2 text-sm font-medium text-cyan-300 hover:bg-cyan-500/20 transition"
                     >
                       <QrCode className="h-4 w-4" />
-                      View QR
-                    </button>
-
-                    <button
-                      onClick={() => handleShareTicket(ticket._id)}
-                      className="inline-flex items-center gap-1 rounded-full border border-white/20 px-3 py-1 text-sm hover:bg-white/10"
-                    >
-                      <Copy className="h-4 w-4" />
-                      Share
+                      Show QR
                     </button>
                   </div>
                 </div>
@@ -140,37 +148,47 @@ export function DashboardSection() {
 
       {/* QR Modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur">
-          <div className="w-full max-w-md rounded-2xl bg-white/10 p-6 backdrop-blur-lg border border-white/20">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl text-white font-semibold">Ticket Details</h3>
-              <button
-                onClick={() => setSelected(null)}
-                className="text-white/70 hover:text-white"
-              >
-                <X className="h-5 w-5" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="w-full max-w-sm rounded-3xl bg-slate-900 p-6 border border-white/10 shadow-2xl relative">
+            
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                  <h3 className="text-xl text-white font-bold">Ticket #{selected.blockchainTicketId || "---"}</h3>
+                  <p className="text-slate-400 text-sm">Scan to board</p>
+              </div>
+              <button onClick={() => setSelected(null)} className="text-white/50 hover:text-white bg-white/5 rounded-full p-1">
+                <X className="h-6 w-6" />
               </button>
             </div>
 
-            <div className="mx-auto mb-4 flex h-40 w-40 items-center justify-center rounded-xl bg-white/20 text-white">
-              <span className="text-lg">QR CODE</span>
+            <div className="mx-auto mb-6 flex items-center justify-center bg-white p-4 rounded-2xl w-fit">
+              <img 
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(selected.qrCode)}`}
+                alt="Ticket QR"
+                className="w-48 h-48 object-contain"
+              />
             </div>
 
-            <div className="space-y-2 text-white/90">
-              <p><strong>From:</strong> {selected.from}</p>
-              <p><strong>To:</strong> {selected.to}</p>
-              <p><strong>Passengers:</strong> {selected.passengers}</p>
-              <p><strong>Date:</strong> {selected.date}</p>
-              <p><strong>Fare:</strong> ₹{selected.fare}</p>
-              <p><strong>Ticket ID:</strong> {selected._id}</p>
+            <div className="space-y-3 bg-white/5 p-4 rounded-xl text-sm mb-4 border border-white/5">
+              <div className="flex justify-between">
+                <span className="text-slate-400">Route</span>
+                <span className="text-white font-medium">{selected.from} ➝ {selected.to}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Hash</span>
+                <span className="text-white font-mono text-xs truncate w-32">{selected.blockchainTxHash || "---"}</span>
+              </div>
             </div>
 
-            <button
-              onClick={() => setSelected(null)}
-              className="mt-6 w-full rounded-xl bg-gradient-to-r from-cyan-500 to-fuchsia-500 py-2 font-medium text-white hover:opacity-90"
-            >
-              Close
-            </button>
+            {selected.blockchainTxHash && (
+                <button
+                    onClick={() => openPolygonScan(selected.blockchainTxHash)}
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-800 py-3 text-sm text-slate-300 hover:bg-slate-700 transition"
+                >
+                    <ExternalLink size={14} />
+                    View Proof
+                </button>
+            )}
           </div>
         </div>
       )}
