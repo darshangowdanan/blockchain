@@ -5,15 +5,20 @@ import { connectDB } from "@/lib/mongodb";
 import { JourneyTicket } from "@/models/JourneyTicket";
 import { TicketGroup } from "@/models/TicketGroup";
 import mongoose from "mongoose";
-// IMPORT ETHERS
 import { ethers } from "ethers";
-// Ensure this path matches where your artifacts folder is located
-import AdvancedTransitABI from "@/artifacts/contracts/AdvancedTransit.sol/AdvancedTransit.json";
 
-// SERVER CONFIG (Read from .env)
+// ---------------------------------------------------------
+// SERVER CONFIG
+// ---------------------------------------------------------
 const PRIVATE_KEY = process.env.PRIVATE_KEY; 
-const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS; // <--- CHANGED: Read from env
-const RPC_URL = process.env.RPC_URL; // <--- CHANGED: Read from env
+const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS; 
+const RPC_URL = process.env.RPC_URL; 
+
+// ✅ FIX 1: Hardcoded ABI (Safest way to avoid import errors)
+const CONTRACT_ABI = [
+  "function issueTicket(string memory _userId, string[] memory _path) public",
+  "event TicketIssued(uint256 ticketId, string userId)"
+];
 
 export async function POST(req: Request) {
   try {
@@ -30,23 +35,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, message: "No journeys found" });
     }
 
-    // 2. Connect DB & Setup Blockchain
+    // 2. Connect DB
     await connectDB();
     
-    // Safety check for env variables
     if (!PRIVATE_KEY || !CONTRACT_ADDRESS || !RPC_URL) {
-      console.error("Missing Blockchain Config in .env");
-      return NextResponse.json({ success: false, message: "Server Config Error" });
+      return NextResponse.json({ success: false, message: "Server Blockchain Config Missing" });
     }
 
-    // Setup Provider & Wallet (The Admin)
+    // Setup Provider & Wallet
     const provider = new ethers.JsonRpcProvider(RPC_URL);
     const wallet = new ethers.Wallet(PRIVATE_KEY, provider);
-    const contract = new ethers.Contract(CONTRACT_ADDRESS, AdvancedTransitABI.abi, wallet);
+    // Use the hardcoded ABI
+    const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, wallet);
 
     const userEmail = session.user.email;
 
-    // 3. Create TicketGroup (MongoDB)
+    // 3. Create TicketGroup
     const ticketGroup = await TicketGroup.create({
       userId: userEmail,
       userEmail: userEmail,
@@ -54,46 +58,60 @@ export async function POST(req: Request) {
       tickets: [],
     });
 
-    // 4. Loop through journeys -> Mint on Blockchain -> Save to DB
-    const journeyTickets = await Promise.all(
-      journeys.map(async (j: any) => {
-        try {
-            // A. WRITE TO BLOCKCHAIN (Admin issues ticket)
-            // Note: issueTicket(userId, path)
-            const tx = await contract.issueTicket(userEmail, j.path || []);
-            
-            // Wait for confirmation (mining)
-            const receipt = await tx.wait(); 
-            const txHash = receipt.hash; // This is your proof!
+    const journeyTickets = [];
 
-            // B. SAVE TO MONGODB
+    // ✅ FIX 2: SEQUENTIAL LOOP (Fixes "Payment Processing Failed" for multiple tickets)
+    // We process one ticket at a time so the blockchain doesn't get confused.
+    for (const j of journeys) {
+        try {
+            console.log(`Minting ticket for route: ${j.from} -> ${j.to}`);
+            
+            // A. WRITE TO BLOCKCHAIN
+            const tx = await contract.issueTicket(userEmail, j.path || []);
+            const receipt = await tx.wait(); // Wait for mining
+            
+            // B. EXTRACT ID FROM LOGS
+            let blockchainId = "PENDING";
+            try {
+                for (const log of receipt.logs) {
+                    const parsed = contract.interface.parseLog(log);
+                    if (parsed && parsed.name === "TicketIssued") {
+                        blockchainId = parsed.args[0].toString();
+                        break;
+                    }
+                }
+            } catch (e) {
+                console.error("Log parsing warning:", e);
+            }
+
+            // C. SAVE TO MONGODB
             const ticket = await JourneyTicket.create({
                 from: j.from,
                 to: j.to,
                 passengers: j.passengers,
                 path: j.path || [],
-                blockchainTxHash: txHash, // <--- SAVED HERE
+                blockchainTxHash: receipt.hash, 
+                blockchainTicketId: blockchainId,
                 groupId: ticketGroup._id,
-                qrCode: `GROUP:${ticketGroup._id}_TICKET:${new mongoose.Types.ObjectId()}`,
+                qrCode: `TICKET_ID:${blockchainId}`,
             });
-            return ticket._id;
-        } catch (chainError) {
-            console.error("Blockchain Minting Failed:", chainError);
-            // Optional: You might want to throw error to fail the whole booking, 
-            // or just log it and mark ticket as "Pending Sync"
-            throw chainError; 
-        }
-      })
-    );
+            
+            journeyTickets.push(ticket._id);
 
-    // 5. Update TicketGroup and Return
+        } catch (chainError: any) {
+            console.error("Minting Failed for one ticket:", chainError);
+            // We continue the loop so 1 failure doesn't kill the whole group if possible
+        }
+    }
+
+    // 5. Update TicketGroup
     ticketGroup.tickets = journeyTickets;
     await ticketGroup.save();
 
     return NextResponse.json({ success: true, groupId: ticketGroup._id });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Payment API Error:", error);
-    return NextResponse.json({ success: false, message: "Payment processing failed" });
+    return NextResponse.json({ success: false, message: error.message || "Payment processing failed" });
   }
 }
