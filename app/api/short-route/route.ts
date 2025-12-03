@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectBMTC } from "@/lib/bmtc";
-import Stop from "@/models/stops";
+// import Stop from "@/models/stops";
 
 // Temporary Graph (You will replace with your real bus route graph)
 import graph from "@/data/graph.json";

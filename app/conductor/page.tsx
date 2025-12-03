@@ -4,15 +4,24 @@ import { useState, useEffect, useRef } from "react";
 import { ScanLine, CheckCircle, XCircle, MapPin, Loader2, Camera, X } from "lucide-react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 
+// Define the Stop type based on the API response structure
+type Stop = { stop_id: number; stop_name: string };
+
 export default function ConductorPage() {
   // State for form inputs
   const [ticketId, setTicketId] = useState("");
-  const [currentStop, setCurrentStop] = useState("Kempegowda Bus Station (Majestic)"); 
+  
+  // Autocomplete states
+  const [stopSearch, setStopSearch] = useState("");
+  const [selectedStopId, setSelectedStopId] = useState<string | null>(null);
+  const [suggestions, setSuggestions] = useState<Stop[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
   
   // State for UI feedback
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [statusMsg, setStatusMsg] = useState("");
   const [isScanning, setIsScanning] = useState(false);
+  const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // Scanner Logic
   useEffect(() => {
@@ -25,14 +34,11 @@ export default function ConductorPage() {
 
       scanner.render(
         (decodedText) => {
-          // Success Callback
           handleScanSuccess(decodedText);
           scanner.clear();
           setIsScanning(false);
         },
-        (errorMessage) => {
-          // Error Callback (ignore frame errors)
-        }
+        (errorMessage) => {}
       );
 
       return () => {
@@ -42,25 +48,67 @@ export default function ConductorPage() {
   }, [isScanning]);
 
   const handleScanSuccess = (decodedText: string) => {
-    // Parse the QR data (Format: "TICKET_ID:101" or just "101")
     let extractedId = decodedText;
     
     if (decodedText.startsWith("TICKET_ID:")) {
       extractedId = decodedText.split(":")[1];
     } else if (decodedText.includes("_TICKET:")) {
-       // Handle older format GROUP:ID_TICKET:ID
        const parts = decodedText.split("_TICKET:");
        if (parts.length > 1) extractedId = parts[1];
     }
 
     setTicketId(extractedId);
-    // Auto-submit after scanning? Optional. Let's just fill the input.
-    // handleValidation(extractedId); 
+  };
+
+  // Autocomplete Fetch Logic
+  const fetchSuggestions = async (query: string) => {
+    try {
+      setIsSearching(true);
+      const res = await fetch(`/api/stops?search=${encodeURIComponent(query)}`);
+      const data = await res.json();
+      setSuggestions(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  // Handle Search Input Change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setStopSearch(val);
+    setSelectedStopId(null); // Reset ID if user types (must select from list)
+
+    if (typingTimeout) clearTimeout(typingTimeout);
+    
+    setTypingTimeout(
+      setTimeout(() => {
+        if (val.length > 1) fetchSuggestions(val);
+        else setSuggestions([]);
+      }, 300)
+    );
+  };
+
+  const selectStop = (stop: Stop) => {
+    setStopSearch(stop.stop_name);
+    setSelectedStopId(stop.stop_id.toString()); // Store as string for blockchain comparison
+    setSuggestions([]);
   };
 
   const handleValidation = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!ticketId) return;
+    
+    if (!ticketId) {
+      setStatus("error");
+      setStatusMsg("Please enter or scan a Ticket ID");
+      return;
+    }
+    if (!selectedStopId) {
+      setStatus("error");
+      setStatusMsg("Please select a valid Bus Stop from the list");
+      return;
+    }
 
     setStatus("loading");
     setStatusMsg("Verifying with Blockchain...");
@@ -69,7 +117,8 @@ export default function ConductorPage() {
       const res = await fetch("/api/scan-ticket", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ticketId, currentStop }),
+        // Send the ID (e.g. "5") as currentStop, because that's what is stored in the path on-chain
+        body: JSON.stringify({ ticketId, currentStop: selectedStopId }),
       });
 
       const data = await res.json();
@@ -107,7 +156,7 @@ export default function ConductorPage() {
         </div>
       )}
 
-      <div className="w-full max-w-md bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-xl shadow-2xl">
+      <div className="w-full max-w-md bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-xl shadow-2xl relative">
         
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
@@ -147,33 +196,49 @@ export default function ConductorPage() {
             </div>
           </div>
 
-          {/* Bus Stop Selection */}
-          <div>
+          {/* Autocomplete Bus Stop Selection */}
+          <div className="relative">
             <label className="block text-sm text-slate-300 mb-1.5 font-medium">
               Current Bus Location
             </label>
             <div className="relative">
-              <MapPin className="absolute left-3 top-3.5 text-slate-500 w-4 h-4" />
-              <select
-                value={currentStop}
-                onChange={(e) => setCurrentStop(e.target.value)}
-                className="w-full bg-black/40 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white appearance-none focus:ring-2 focus:ring-fuchsia-500 outline-none cursor-pointer transition-all"
-              >
-                <option value="Kempegowda Bus Station (Majestic)">Kempegowda Bus Station (Majestic)</option>
-                <option value="Shivajinagar Bus Station">Shivajinagar Bus Station</option>
-                <option value="Banashankari Bus Station">Banashankari Bus Station</option>
-                <option value="K R Market">K R Market</option>
-                <option value="Whitefield">Whitefield</option>
-                <option value="Yelahanka">Yelahanka</option>
-                <option value="Electronic City">Electronic City</option>
-              </select>
+              <MapPin className="absolute left-3 top-3.5 text-slate-500 w-4 h-4 z-10" />
+              <input
+                type="text"
+                placeholder="Search bus stop..."
+                value={stopSearch}
+                onChange={handleSearchChange}
+                className="w-full bg-black/40 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:ring-2 focus:ring-fuchsia-500 outline-none transition-all"
+              />
+              {/* Spinner for search */}
+              {isSearching && (
+                <div className="absolute right-3 top-3.5">
+                  <Loader2 className="w-4 h-4 animate-spin text-slate-500" />
+                </div>
+              )}
             </div>
+
+            {/* Suggestions Dropdown */}
+            {suggestions.length > 0 && (
+              <ul className="absolute z-50 w-full mt-1 bg-slate-900 border border-white/10 rounded-xl shadow-xl max-h-60 overflow-y-auto">
+                {suggestions.map((stop) => (
+                  <li
+                    key={stop.stop_id}
+                    onClick={() => selectStop(stop)}
+                    className="px-4 py-3 hover:bg-white/10 cursor-pointer text-slate-200 border-b border-white/5 last:border-0 flex justify-between items-center"
+                  >
+                    <span>{stop.stop_name}</span>
+                    <span className="text-xs text-slate-500 bg-white/5 px-2 py-1 rounded">ID: {stop.stop_id}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            disabled={status === "loading" || !ticketId}
+            disabled={status === "loading" || !ticketId || !selectedStopId}
             className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 py-3.5 rounded-lg font-bold text-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-900/20 flex items-center justify-center gap-2"
           >
             {status === "loading" ? (
