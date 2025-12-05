@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 import { ethers } from "ethers";
 import { connectDB } from "@/lib/mongodb";
 import { JourneyTicket } from "@/models/JourneyTicket";
+import AdvancedTransitABI from "@/artifacts/contracts/AdvancedTransit.sol/AdvancedTransit.json";
 
 // SERVER CONFIG
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 const RPC_URL = process.env.RPC_URL;
 
-// ✅ Hardcoded ABI for Validation
+// Hardcoded ABI for Validation
 const CONTRACT_ABI = [
   "function scanTicket(uint256 _ticketId, string memory _currentStop) public"
 ];
@@ -32,8 +33,7 @@ export async function POST(req: Request) {
 
     console.log(`Conductor Scanning Ticket #${ticketId} at ${currentStop}...`);
 
-    // 2. Call Smart Contract: scanTicket(ticketId, currentStop)
-    // The Admin Wallet pays the gas for this validation logic
+    // 2. BLOCKCHAIN VALIDATION (Reverts if invalid)
     try {
         const tx = await contract.scanTicket(ticketId, currentStop);
         await tx.wait(); // Wait for confirmation
@@ -45,16 +45,23 @@ export async function POST(req: Request) {
         return NextResponse.json({ success: false, message: reason });
     }
 
-    // 3. Optional: Log scan in MongoDB for analytics
+    // 3. ✅ FETCH PASSENGERS FROM DB & UPDATE LOGS
     await connectDB();
-    await JourneyTicket.findOneAndUpdate(
+    
+    // We use { new: true } to get the updated document back
+    const ticketData = await JourneyTicket.findOneAndUpdate(
         { blockchainTicketId: ticketId.toString() },
-        { $set: { updatedAt: new Date() } } 
+        { $set: { updatedAt: new Date() } },
+        { new: true } 
     );
+
+    // Default to 1 if DB read fails (rare edge case), otherwise use stored count
+    const passengers = ticketData ? ticketData.passengers : 1;
 
     return NextResponse.json({ 
       success: true, 
-      message: "Ticket Validated Successfully ✅"
+      message: "Ticket Validated Successfully ✅",
+      passengers: passengers // ✅ SENDING TO FRONTEND
     });
 
   } catch (error: any) {
